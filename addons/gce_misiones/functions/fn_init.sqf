@@ -5,7 +5,6 @@
 if (isServer) then {
     GCE_misionActiva = "";
     publicVariable "GCE_misionActiva";
-    GCE_puentesVolados = [];
     if (isNil "GCE_oroDistanciaMax") then { GCE_oroDistanciaMax = 3000 };   // metros hasta la costa
 
     // Médico rebelde: Antistasi lanza este evento después de equipar a cada recluta

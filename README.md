@@ -74,7 +74,8 @@ en ese momento salen en gris con el motivo, y no se pueden elegir. Solo una misi
 | Misión | Solo disponible si… | Recompensa |
 |---|---|---|
 | ¡No pasarán! | hay un pueblo **nuestro** en rango y una base enemiga que pueda atacarlo | dinero, RR. HH., apoyo |
-| Volar el puente | hay un puente de carretera en **zona enemiga** en rango (no repetido) | dinero |
+| Volar el polvorín | hay una base enemiga en rango: cajas de munición vigiladas; se vuelan con una carga (o destruyendo la caja) | dinero; el enemigo pierde recursos de ataque y defensa |
+| Cortar la línea telefónica | hay una base enemiga en rango: 4 postes hacia nuestro lado; 12 min para tirar 3, sin que te vean | dinero (más sin alarma); el enemigo pierde recursos de defensa |
 | Colectivizar la finca | hay una finca, mina o fábrica **enemiga** en rango: primero la tomas (60 min) y luego aguantas 10 min el contraataque | dinero, RR. HH., apoyo |
 | La imprenta | hay una ciudad en rango (a más de 600 m) con apoyo rebelde < 80 % | mucho apoyo |
 | Refugio antiaéreo | tenemos una **estática antiaérea** a < 800 m de un pueblo nuestro y el enemigo tiene aeródromo con aviones | apoyo, dinero por avión derribado |
@@ -91,9 +92,10 @@ en ese momento salen en gris con el motivo, y no se pueden elegir. Solo una misi
   con los civiles muertos y si el enemigo llegó al centro.
 - **Refugio antiaéreo** no empieza hasta que un jugador llega al pueblo (2 min después), con un
   máximo de 10 minutos de espera.
-- **Volar el puente** solo cuenta cargas puestas por rebeldes, y le quita recursos de ataque al enemigo.
+- **Polvorín** y **línea telefónica** solo cuentan cargas puestas por rebeldes. En la línea, si el enemigo
+  ve a un rebelde cerca da la alarma y manda un grupo desde la base.
 - **Liberar el penal** termina cuando todos los presos liberados llegan al cuartel.
-- Cada misión tiene un **tiempo de espera** antes de repetirse: puente 15 min, finca e imprenta 20,
+- Cada misión tiene un **tiempo de espera** antes de repetirse: línea 15 min, polvorín 20, finca e imprenta 20,
   No pasarán, refugio y penal 30, el oro 90.
 
 ## Jefe de escuadra

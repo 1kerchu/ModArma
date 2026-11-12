@@ -27,16 +27,16 @@ private _c1 = citiesX select { (_x call _esNuestro) && {_x call _enRango} && {([
 ["noPasaran", "¡No pasarán! (defender un pueblo nuestro)", _c1 apply {[_x]},
     format ["no hay ningún pueblo nuestro a menos de %1 km", _km]] call _anadir;
 
-// 2. Volar el puente: puente de carretera en zona enemiga, cerca y aún no volado.
-private _c2 = ((_hq nearRoads _rango) select { (getRoadInfo _x) param [8, false] }) apply { getPosATL _x };
-_c2 = _c2 select {
-    private _p = _x;
-    (GCE_puentesVolados findIf { _x distance2D _p < 60 }) == -1
-    && {_p distance2D _hq > 800}
-    && {([markersX, _p] call BIS_fnc_nearestPosition) call _esEnemigo}
+// 2. Volar el polvorín: puesto, base o aeródromo enemigo en rango (a más de 800 m del cuartel).
+private _bases = (outposts + milbases + airportsX) select {
+    (_x call _esEnemigo) && {_x call _enRango} && {(getMarkerPos _x) distance2D _hq > 800}
 };
-["puente", "Volar el puente", _c2 apply {[_x]},
-    format ["no hay puentes en zona enemiga a menos de %1 km", _km]] call _anadir;
+["polvorin", "Volar el polvorín", _bases apply {[_x]},
+    format ["no hay bases enemigas a menos de %1 km", _km]] call _anadir;
+
+// 2b. Cortar la línea telefónica: igual, base enemiga en rango (la línea sale hacia nuestro lado).
+["telefono", "Cortar la línea telefónica", _bases apply {[_x]},
+    format ["no hay bases enemigas a menos de %1 km", _km]] call _anadir;
 
 // 3. Colectivizar la finca: recurso o fábrica ENEMIGA cerca. Primero se conquista y luego se
 //    defiende del contraataque mientras se colectiviza.

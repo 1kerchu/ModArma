@@ -49,6 +49,7 @@ class CfgFunctions
             class endMission {};
             class morralMedico {};
             class waitArrival {};
+            class rebelCharges {};
         };
         class menu
         {
@@ -62,7 +63,8 @@ class CfgFunctions
         {
             file = "\GCE\addons\gce_misiones\functions\misiones";
             class m_noPasaran {};
-            class m_puente {};
+            class m_polvorin {};
+            class m_telefono {};
             class m_finca {};
             class m_imprenta {};
             class m_refugio {};

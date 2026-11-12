@@ -11,7 +11,7 @@ if (!_ok) exitWith {
 };
 // tiempo de espera antes de poder repetir esta misión (minutos)
 private _espera = createHashMapFromArray [
-    ["noPasaran", 30], ["puente", 15], ["finca", 20], ["imprenta", 20],
+    ["noPasaran", 30], ["polvorin", 20], ["telefono", 15], ["finca", 20], ["imprenta", 20],
     ["refugio", 30], ["oro", 90], ["penal", 30]
 ];
 if (isNil "GCE_esperas") then { GCE_esperas = createHashMap };
