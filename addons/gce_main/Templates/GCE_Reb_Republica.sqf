@@ -30,8 +30,9 @@ private _v = {
 ["vehiclesBasic", [["GCE_R75","NORTH_SOV_R75"] call _v]] call _fnc_saveToTemplate;    // "quad" -> moto con sidecar
 ["vehiclesLightUnarmed", ["LIB_GazM1","LIB_GazM1_dirty"]] call _fnc_saveToTemplate;  // "off-road" -> coche de los años 30
 ["vehiclesLightArmed", ["LIB_Kfz1_MG42_sernyt"]] call _fnc_saveToTemplate;           // coche con ametralladora
-// Camiones: el Opel Blitz es el más rápido (85 km/h, 13 plazas); Ford V8 (75, 14) y ZIS-5 (60, 14) más baratos
-["vehiclesTruck", ["LIB_OpelBlitz_Tent_Y_Camo", ["GCE_Ford_V8","NORTH_FIN_FordV8"] call _v, "LIB_Zis5v"]] call _fnc_saveToTemplate;
+// Camiones: Opel Blitz y GMC son los más rápidos (85 km/h; 13 y 12 plazas, el GMC 6x6 va mejor campo a través);
+// Ford V8 (75, 14) y ZIS-5 (60, 14) más baratos
+["vehiclesTruck", ["LIB_OpelBlitz_Tent_Y_Camo", "LIB_US_GMC_Open", ["GCE_Ford_V8","NORTH_FIN_FordV8"] call _v, "LIB_Zis5v"]] call _fnc_saveToTemplate;
 ["vehiclesAT", [["GCE_BA6","NORTH_SOV_BA6"] call _v, ["GCE_BA10","NORTH_FIN_BA10"] call _v]] call _fnc_saveToTemplate;   // blindados soviéticos BA-6/BA-10
 ["vehiclesAA", ["LIB_Zis5v_61K"]] call _fnc_saveToTemplate;
 

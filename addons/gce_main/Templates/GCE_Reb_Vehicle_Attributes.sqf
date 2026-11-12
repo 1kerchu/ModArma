@@ -17,6 +17,7 @@
     ["NORTH_FIN_FordV8", ["rebCost", 400]],
     ["LIB_Zis5v", ["rebCost", 300]],
     ["LIB_OpelBlitz_Tent_Y_Camo", ["rebCost", 600]],
+    ["LIB_US_GMC_Open", ["rebCost", 700]],
     ["NORTH_SOV_BA6", ["rebCost", 2500]],
     ["NORTH_FIN_BA10", ["rebCost", 3000]],
     ["LIB_Zis5v_61K", ["rebCost", 900]],
