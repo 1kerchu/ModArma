@@ -126,6 +126,16 @@ if (isNil "_gceCNT") then {
     ];
 };
 
+// Gorros propios (PBO gce_uniformes / gce_gorros), solo si están cargados
+private _gorros = ["GCE_H_Boina_Negra","GCE_H_Gorrillo_Negro","GCE_H_Gorrillo_Rojo"]
+    select { isClass (configFile >> "CfgWeapons" >> _x) };
+if (isNil "_gceCNT") then {
+    _rebHeadgear append (_gorros select { _x != "GCE_H_Gorrillo_Negro" });
+} else {
+    // CNT-FAI: gorrillo negro y rojo, boina negra (salen el doble que las gorras de obrero)
+    _rebHeadgear append (_gorros + _gorros);
+};
+
 private _dlcUniforms = [];
 
 ["uniforms", _rebUniforms + _dlcUniforms] call _fnc_saveToTemplate;

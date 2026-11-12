@@ -3,7 +3,7 @@
 Genera las texturas de los uniformes de GCE (tela lisa con trama, desgaste y suciedad).
 
 Uso:  python3 tools/make_uniforms.py
-Salida: addons/gce_uniformes/data/*_co.paa  y  art/uniformes/*.png
+Salida: addons/gce_uniformes/data/*_co.paa, addons/gce_gorros/data/*_co.paa y art/uniformes/*.png
 
 La textura es "tela continua", sin costuras dibujadas: así sirve para cualquier modelo sin
 conocer su mapa UV. Los pliegues y volúmenes los sigue dando el material original del modelo.
@@ -49,7 +49,24 @@ def tela(color, var, size=1024, seed=0):
     img = Image.composite(tierra, img, manchas)
     return img
 
+# Gorros: boinas -> PBO gce_uniformes (base: boina vanilla); gorrillos -> PBO gce_gorros (base: pilotka de Northern Fronts).
+OUT_GORROS = os.path.join(ROOT, "addons", "gce_gorros", "data")
+GORROS = {
+    "boina_roja":     ((150, 22, 28),  10),   # boina roja carlista (Requetés)
+    "boina_negra":    ((28, 27, 28),    8),   # boina negra (milicianos, campesinos)
+    "gorrillo_negro": ((30, 29, 30),   10),   # gorrillo cuartelero negro (CNT-FAI)
+    "gorrillo_rojo":  ((140, 24, 28),  12),   # gorrillo rojo (milicias)
+}
+
 def main():
+    os.makedirs(OUT_GORROS, exist_ok=True)
+    for i, (name, (color, var)) in enumerate(GORROS.items()):
+        img = tela(color, var, size=512, seed=100 + i)
+        img.save(os.path.join(ART, name + ".png"))
+        dest = OUT if name.startswith("boina") else OUT_GORROS   # boinas -> gce_uniformes (solo vanilla)
+        os.makedirs(dest, exist_ok=True)
+        write_paa(img, os.path.join(dest, name + "_co.paa"))
+        print("ok", name)
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(ART, exist_ok=True)
     for i, (name, (color, var)) in enumerate(TELAS.items()):

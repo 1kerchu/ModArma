@@ -1,6 +1,7 @@
 /*
     GCE - Uniformes (PBO separado: si algo falla aquí, las facciones siguen funcionando)
 
+    Boinas basadas en H_Beret_blk (boina vanilla).
     Monos de miliciano basados en el mono de trabajo del Arma 3 base (gratis para todos):
       CfgWeapons  U_C_WorkerCoveralls   (objeto del inventario)
       CfgVehicles C_man_w_worker_F      (modelo que se ve puesto)
@@ -15,7 +16,7 @@ class CfgPatches
         name = "GCE - Uniformes";
         author = "GCE";
         units[] = {"GCE_Miliciano_Mono_Azul", "GCE_Miliciano_Mono_Mahon", "GCE_Miliciano_Mono_Negro", "GCE_Miliciano_Mono_Caqui"};
-        weapons[] = {"GCE_U_Mono_Azul", "GCE_U_Mono_Mahon", "GCE_U_Mono_Negro", "GCE_U_Mono_Caqui"};
+        weapons[] = {"GCE_H_Boina_Roja", "GCE_H_Boina_Negra", "GCE_U_Mono_Azul", "GCE_U_Mono_Mahon", "GCE_U_Mono_Negro", "GCE_U_Mono_Caqui"};
         requiredVersion = 2.20;
         requiredAddons[] = {"A3_Characters_F"};
         version = 0.1;
@@ -67,6 +68,22 @@ class CfgWeapons
 {
     class UniformItem;
     class U_C_WorkerCoveralls;
+    class H_Beret_blk;          // boina del Arma 3 base
+
+    class GCE_H_Boina_Roja : H_Beret_blk
+    {
+        scope = 2;
+        author = "GCE";
+        displayName = "Boina roja (Requeté)";
+        hiddenSelectionsTextures[] = {"\GCE\addons\gce_uniformes\data\boina_roja_co.paa"};
+    };
+    class GCE_H_Boina_Negra : H_Beret_blk
+    {
+        scope = 2;
+        author = "GCE";
+        displayName = "Boina negra";
+        hiddenSelectionsTextures[] = {"\GCE\addons\gce_uniformes\data\boina_negra_co.paa"};
+    };
     class GCE_U_Mono_Azul : U_C_WorkerCoveralls
     {
         scope = 2;

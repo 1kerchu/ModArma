@@ -36,9 +36,11 @@ Opcionales (si están cargados, los templates los usan solos):
 ## Estructura
 ```
 mod.cpp                          info que se ve en el launcher
-addons/gce_uniformes/            PBO 2: uniformes propios (monos de miliciano)
-  config.cpp                     GCE_U_Mono_Azul / _Mahon / _Negro / _Caqui
+addons/gce_uniformes/            PBO 2 (solo Arma base): monos y boinas
+  config.cpp                     GCE_U_Mono_Azul/_Mahon/_Negro/_Caqui, GCE_H_Boina_Roja/_Negra
   data/*_co.paa                  texturas (tools/make_uniforms.py)
+addons/gce_gorros/               PBO 3 (necesita Northern Fronts): gorrillos
+  config.cpp                     GCE_H_Gorrillo_Negro / _Rojo (retextura de la pilotka)
 addons/gce_main/
   $PBOPREFIX$                    GCE\addons\gce_main
   config.cpp                     registra los 4 bandos en Antistasi (class A3A >> Templates)
@@ -71,8 +73,12 @@ Se generan con `python3 tools/make_flags.py` (necesita Pillow) y salen en:
 Para añadir otra bandera, crea una función de dibujo en `tools/make_flags.py` y añádela a `BANDERAS`.
 
 ## Compilar y publicar
-Hay **dos PBO**: empaqueta `gce_main` (prefijo `GCE\addons\gce_main`) y `gce_uniformes`
-(prefijo `GCE\addons\gce_uniformes`), los dos en `@GCE/addons`.
+Hay **tres PBO**. Empaqueta cada carpeta de `addons/` con su prefijo y ponlos todos en `@GCE/addons`:
+| Carpeta | Prefijo |
+|---|---|
+| `gce_main` | `GCE\addons\gce_main` |
+| `gce_uniformes` | `GCE\addons\gce_uniformes` |
+| `gce_gorros` | `GCE\addons\gce_gorros` |
 
 1. Instala **Arma 3 Tools** (Steam → Biblioteca → Herramientas).
 2. Con **Addon Builder**: origen `addons/gce_main`, destino `@GCE/addons`,
@@ -85,7 +91,8 @@ Hay **dos PBO**: empaqueta `gce_main` (prefijo `GCE\addons\gce_main`) y `gce_uni
 ## Pendiente (siguientes fases)
 - [x] Banderas propias (rojigualda, tricolor republicana, CNT-FAI) + marcadores de mapa.
 - [x] Monos de miliciano (azul, mahón, negro, caqui) para CNT-FAI y milicias republicanas.
-- [ ] Pañuelo rojinegro, boina roja de requeté, gorro isabelino.
+- [x] Boina roja de requeté, boina negra, gorrillos negro y rojo.
+- [ ] Pañuelo rojinegro (no existe ningún accesorio de cuello que sirva de base).
 - [ ] Material italiano del CTV (no hay en IFA3/Northern Fronts; buscar otro mod gratis o retexturas).
 - [ ] Probar en partida y ajustar classnames que den error en el RPT.
 - [ ] Bando "Rivales" (opcional).

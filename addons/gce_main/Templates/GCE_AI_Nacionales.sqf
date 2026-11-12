@@ -391,6 +391,13 @@ _militiaLoadoutData set ["backpacks", ["B_LIB_GER_A_frame"]];
 _militiaLoadoutData set ["helmets", ["H_NORTH_Nor_Fieldcap","H_NORTH_Nor_Fieldcap_2","H_NORTH_Nor_Fieldcap_3","H_NORTH_Nor_Fieldcap_4"]];
 _militiaLoadoutData set ["sniHats", ["H_NORTH_Nor_Fieldcap","H_NORTH_Nor_Fieldcap_2"]];
 _militiaLoadoutData set ["slHat", ["H_NORTH_Nor_Fieldcap_3"]];
+// Requetés: boina roja (PBO gce_uniformes). Si está cargado, la mitad de la milicia la lleva.
+if (isClass (configFile >> "CfgWeapons" >> "GCE_H_Boina_Roja")) then {
+    private _boinas = ["GCE_H_Boina_Roja","GCE_H_Boina_Roja","GCE_H_Boina_Roja","GCE_H_Boina_Roja"];
+    _militiaLoadoutData set ["helmets", (_militiaLoadoutData get "helmets") + _boinas];
+    _militiaLoadoutData set ["sniHats", (_militiaLoadoutData get "sniHats") + _boinas];
+    _militiaLoadoutData set ["slHat", ["GCE_H_Boina_Roja"]];
+};
 
 _militiaLoadoutData set ["rifles", [["LIB_K98", "", "", "", ["LIB_5Rnd_792x57","LIB_5Rnd_792x57_t"], [], ""],
         ["LIB_K98_Late", "", "", "", ["LIB_5Rnd_792x57","LIB_5Rnd_792x57_t"], [], ""]]];

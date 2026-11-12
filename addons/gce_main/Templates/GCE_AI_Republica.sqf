@@ -419,6 +419,8 @@ _militiaLoadoutData set ["uniforms", ["U_LIB_CIV_Citizen_1","U_LIB_CIV_Citizen_2
 _militiaLoadoutData set ["slUniforms", _uniformesEP];
 // Monos de miliciano (PBO gce_uniformes), si está cargado
 private _monosMilicia = ["GCE_U_Mono_Azul","GCE_U_Mono_Mahon","GCE_U_Mono_Caqui"] select { isClass (configFile >> "CfgWeapons" >> _x) };
+private _gorrosMilicia = ["GCE_H_Gorrillo_Rojo","GCE_H_Boina_Negra"] select { isClass (configFile >> "CfgWeapons" >> _x) };
+_militiaLoadoutData set ["helmets", (_militiaLoadoutData get "helmets") + _gorrosMilicia + _gorrosMilicia];
 if (_monosMilicia isNotEqualTo []) then {
     _militiaLoadoutData set ["uniforms", (_militiaLoadoutData get "uniforms") + _monosMilicia + _monosMilicia];
 };
