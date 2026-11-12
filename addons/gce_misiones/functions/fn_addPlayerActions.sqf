@@ -23,4 +23,10 @@ _ids pushBack (player addAction [
     nil, 1.2, false, true, "",
     "call GCE_fnc_jefeCondRetirar"
 ]);
+_ids pushBack (player addAction [
+    "<t color='#C8102E'>Reclutar brigadista internacional (250)</t>",
+    { [] spawn GCE_fnc_brigadistaReclutar },
+    nil, 1.35, false, true, "",
+    "call GCE_fnc_brigadistaCond"
+]);
 player setVariable ["GCE_acciones", _ids];

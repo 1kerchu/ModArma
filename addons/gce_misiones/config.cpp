@@ -50,6 +50,7 @@ class CfgFunctions
             class morralMedico {};
             class waitArrival {};
             class rebelCharges {};
+            class verificar {};
         };
         class menu
         {
@@ -74,6 +75,20 @@ class CfgFunctions
             class civSeguir {};
             class accionPreso {};
             class presoLiberar {};
+        };
+        class brigadas
+        {
+            file = "\GCE\addons\gce_misiones\functions\brigadas";
+            class brigadasMonitor {};
+            class brigadistaCond {};
+            class brigadistaReclutar {};
+        };
+        class eventos
+        {
+            file = "\GCE\addons\gce_misiones\functions\eventos";
+            class eventosLoop {};
+            class ev_desertores {};
+            class ev_huelga {};
         };
         class jefe
         {

@@ -106,6 +106,29 @@ reparte los blancos: antitanques a los vehículos, ametralladoras a los grupos y
 más cercano, sin amontonarse. Avisa por radio de los vehículos. **Tú sigues mandando el movimiento**
 y el modo de combate (si mandas no disparar, solo apuntan). Solo un jefe por grupo.
 
+## Brigadas Internacionales
+Llegan al alcanzar el **nivel de guerra 3** (y otra oleada en el 6): aviso a todos y +6 de recursos
+humanos cada vez. Desde entonces, junto a Petros: **"Reclutar brigadista internacional"**
+(1 de RR. HH. + 250 de tu dinero, máx. 4 por grupo). Mejor puntería y valor que un miliciano,
+uniforme del Ejército Popular, nombre extranjero y voz inglesa.
+
+## Eventos aleatorios
+Cada 25-45 minutos puede pasar algo, siempre que tenga sentido:
+- **Bombardeo por sorpresa**: lanza la misión del refugio (solo si se cumplen sus condiciones).
+- **Desertores**: 3-4 soldados enemigos huyen hacia el cuartel perseguidos; los que llegan se unen
+  (+1 RR. HH. cada uno). Necesita una base enemiga a menos de 5 km del cuartel.
+- **Huelga**: los obreros de una fábrica enemiga paran y llega la policía. Si la huelga triunfa, el
+  enemigo pierde producción y sube el apoyo del pueblo.
+
+Se desactivan con `GCE_eventosActivos = false` y la frecuencia se cambia con
+`GCE_eventosIntervalo = [min, max]` (minutos), en el servidor.
+
+## Comprobador
+En la consola de depuración: `[] call GCE_fnc_verificar`. Comprueba que existen en tu juego todas
+las clases y archivos que usa el mod, qué PBO están cargados y si las texturas de los uniformes se
+pueden cambiar. El informe sale en pantalla, en el `.rpt` y se copia al portapapeles.
+Si cambias los templates, regenera la lista con `python3 tools/gen_verificar.py`.
+
 ## Morral de sanitario
 Mochila del equipo inicial (ilimitada) con sitio para el Medikit (en el PBO `gce_uniformes`).
 Los **médicos** rebeldes que recluta la IA la llevan puesta automáticamente, con su material

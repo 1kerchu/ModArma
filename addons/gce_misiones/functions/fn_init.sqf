@@ -14,6 +14,9 @@ if (isServer) then {
             [_u] remoteExec ["GCE_fnc_morralMedico", _u];
         };
     }] call CBA_fnc_addEventHandler;
+
+    [] spawn GCE_fnc_brigadasMonitor;
+    [] spawn GCE_fnc_eventosLoop;
 };
 
 if (!hasInterface) exitWith {};
