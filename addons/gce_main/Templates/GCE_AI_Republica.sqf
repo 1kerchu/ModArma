@@ -354,7 +354,7 @@ _militiaLoadoutData set ["vests", ["V_NORTH_SOV_Belt_Mosin","V_NORTH_SOV_Belt_Mo
 _militiaLoadoutData set ["glVests", ["V_NORTH_SOV_Belt_SVT","V_NORTH_SOV_Belt_SVT_2"]];
 _militiaLoadoutData set ["Hvests", ["V_NORTH_SOV_Belt_Officer_Assault","V_NORTH_SOV_Belt_Officer_Assault_2","V_NORTH_SOV_Belt_Officer_Assault_3","V_NORTH_SOV_Belt_Officer_Assault_4"]];
 _militiaLoadoutData set ["backpacks", ["NORTH_SOV_Veshmeshok","NORTH_SOV_Veshmeshok_2","NORTH_SOV_Veshmeshok_3"]];
-_militiaLoadoutData set ["helmets", ["H_NORTH_SOV_Obr35_Pilotka","H_NORTH_SOV_Obr35_Pilotka_2","H_NORTH_SOV_Obr35_Pilotka_3","H_NORTH_SOV_Obr35_Pilotka_4","H_NORTH_SOV_SSh36_Helmet","H_NORTH_SOV_SSh36_Helmet_2","H_NORTH_SOV_SSh36_Helmet_3","H_NORTH_SOV_SSh36_Helmet_4"]];
+_militiaLoadoutData set ["helmets", ["H_NORTH_SOV_Obr35_Pilotka","H_NORTH_SOV_Obr35_Pilotka_2","H_NORTH_SOV_Obr35_Pilotka_3","H_NORTH_SOV_Obr35_Pilotka_4","H_NORTH_SOV_SSh36_Helmet","H_NORTH_SOV_SSh36_Helmet_2","H_NORTH_SOV_SSh36_Helmet_3"]];
 _militiaLoadoutData set ["sniHats", ["H_NORTH_SOV_Obr35_Pilotka","H_NORTH_SOV_Obr35_Pilotka_2","H_NORTH_SOV_Obr35_Pilotka_3","H_NORTH_SOV_Obr35_Pilotka_4"]];
 _militiaLoadoutData set ["slHat", ["H_NORTH_SOV_Obr35_Furazhka","H_NORTH_SOV_Obr35_Furazhka_2","H_NORTH_SOV_Obr35_Furazhka_3","H_NORTH_SOV_Obr35_Furazhka_4","H_NORTH_SOV_Obr35_Furazhka_5","H_NORTH_SOV_Obr35_Furazhka_6"]];
 
@@ -397,7 +397,7 @@ private _gceSMGs = [
 
 private _uniformesEP = ["U_NORTH_SOV_Obr35_Uniform_Early_Private","U_NORTH_SOV_Obr35_Uniform_Early_Private_2","U_NORTH_SOV_Obr35_Uniform_Early_Private_3","U_NORTH_SOV_Obr35_Uniform_Early_Private_4","U_NORTH_SOV_Obr35_Uniform_Early_Private_5","U_NORTH_SOV_Obr35_Uniform_Early_Private_6"];
 private _oficialesEP = ["U_NORTH_SOV_Obr35_Uniform_Early_2ndLt","U_NORTH_SOV_Obr35_Uniform_Early_2ndLt_2"];
-private _cascosEP = ["H_NORTH_SOV_SSh36_Helmet","H_NORTH_SOV_SSh36_Helmet_2","H_NORTH_SOV_SSh36_Helmet_3","H_NORTH_SOV_SSh36_Helmet_4","H_NORTH_SOV_Obr35_Pilotka","H_NORTH_SOV_Obr35_Pilotka_2"];
+private _cascosEP = ["H_NORTH_SOV_SSh36_Helmet","H_NORTH_SOV_SSh36_Helmet_2","H_NORTH_SOV_SSh36_Helmet_3","H_NORTH_SOV_Obr35_Pilotka","H_NORTH_SOV_Obr35_Pilotka_2"];
 
 // Ejército Popular y Brigadas Internacionales (élite)
 {

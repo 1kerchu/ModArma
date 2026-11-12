@@ -117,7 +117,6 @@ private _clases = [
     "H_NORTH_SOV_SSh36_Helmet",
     "H_NORTH_SOV_SSh36_Helmet_2",
     "H_NORTH_SOV_SSh36_Helmet_3",
-    "H_NORTH_SOV_SSh36_Helmet_4",
     "H_NORTH_SOV_SSh39_Helmet",
     "H_NORTH_SOV_SSh39_Helmet_2",
     "H_NORTH_SOV_SSh40_Helmet",
