@@ -2,8 +2,9 @@
     GCE_fnc_jefeLoop  [jefe]   (donde el jefe es local: el cliente del jugador que lo manda)
 
     Cada 3 segundos el jefe:
-      1. comparte con el grupo los enemigos que conoce (reveal),
-      2. reparte los blancos:
+      1. mira qué enemigos conoce el grupo (NO los "revela": así cada soldado sigue avisando
+         por radio de lo que descubre, como en el juego normal),
+      2. reparte los blancos entre los enemigos que cada soldado ya ve:
            - quien lleva antitanque  -> el vehículo enemigo más cercano
            - ametralladoras          -> el enemigo con más compañeros alrededor (grupos)
            - el resto                -> el enemigo más cercano con menos de 2 tiradores asignados
@@ -36,16 +37,17 @@ while { alive _jefe && {_jefe getVariable ["GCE_esJefe", false]} && {group _jefe
             private _miembros = (units _grp) select {
                 alive _x && {!isPlayer _x} && {local _x} && {lifeState _x != "INCAPACITATED"} && {vehicle _x == _x}
             };
-            { private _m = _x; { _m reveal [_x, 2.5] } forEach _enemigos } forEach _miembros;
-
-            private _vehiculos = _enemigos select { !(_x isKindOf "CAManBase") };
-            private _infanteria = _enemigos select { _x isKindOf "CAManBase" };
+            private _todosVeh = _enemigos select { !(_x isKindOf "CAManBase") };
+            private _todosInf = _enemigos select { _x isKindOf "CAManBase" };
             private _cuenta = createHashMap;            // hashValue del blanco -> nº de tiradores
             private _disparar = (combatMode _grp) in ["YELLOW", "RED"];
             private _ordenes = createHashMap;           // hashValue del blanco -> [blanco, [nombres], tipo]
 
             {
                 private _u = _x;
+                // solo enemigos que este soldado ya ha visto (sin chivatazos: así sigue habiendo avisos por radio)
+                private _vehiculos = _todosVeh select { (_u knowsAbout _x) > 1 };
+                private _infanteria = _todosInf select { (_u knowsAbout _x) > 1 };
                 private _blanco = objNull;
                 private _tipo = "";
                 private _anterior = _u getVariable ["GCE_blanco", objNull];
@@ -61,7 +63,7 @@ while { alive _jefe && {_jefe getVariable ["GCE_esJefe", false]} && {group _jefe
                         private _mejor = -1;
                         {
                             private _e = _x;
-                            private _n = { _x distance _e < 20 } count _infanteria;
+                            private _n = { _x distance _e < 20 } count _todosInf;
                             if (_n > _mejor && {_u distance _e < 600}) then { _mejor = _n; _blanco = _e };
                         } forEach _infanteria;
                         _tipo = ["el enemigo", "el grupo enemigo"] select (_mejor > 1);
@@ -117,7 +119,7 @@ while { alive _jefe && {_jefe getVariable ["GCE_esJefe", false]} && {group _jefe
                     _jefe groupChat format ["¡%1 enemigo a las %2, %3 metros!",
                         getText (configOf _x >> "displayName"), [_x] call _rumbo, round (player distance _x)];
                 };
-            } forEach _vehiculos;
+            } forEach _todosVeh;
             _avisados = _avisados select { alive _x };
         };
     };
