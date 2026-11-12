@@ -74,6 +74,9 @@ private _initialRebelEquipment = [
     "LIB_Binocular_SU"
 ];
 
+// Morral de sanitario (PBO gce_uniformes): cabe el Medikit para reanimar
+if (isClass (configFile >> "CfgVehicles" >> "GCE_B_Morral_Sanitario")) then {_initialRebelEquipment append ["GCE_B_Morral_Sanitario"]};
+
 if (A3A_hasTFAR && startWithLongRangeRadio) then {_initialRebelEquipment append ["B_LIB_SOV_RA_Radio"]};
 if (A3A_hasTFARBeta && startWithLongRangeRadio) then {_initialRebelEquipment append ["B_LIB_SOV_RA_Radio"]};
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;

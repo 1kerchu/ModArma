@@ -39,6 +39,10 @@ mod.cpp                          info que se ve en el launcher
 addons/gce_uniformes/            PBO 2 (solo Arma base): monos y boinas
   config.cpp                     GCE_U_Mono_Azul/_Mahon/_Negro/_Caqui, GCE_H_Boina_Roja/_Negra
   data/*_co.paa                  texturas (tools/make_uniforms.py)
+addons/gce_misiones/             PBO 4: misiones nuevas y jefe de escuadra (sirve con cualquier facción)
+  functions/menu/                qué misiones se pueden elegir (fn_availability.sqf)
+  functions/misiones/            una misión por archivo (fn_m_*.sqf)
+  functions/jefe/                jefe de escuadra
 addons/gce_gorros/               PBO 3 (necesita Northern Fronts): gorrillos
   config.cpp                     GCE_H_Gorrillo_Negro / _Rojo (retextura de la pilotka)
 addons/gce_main/
@@ -63,6 +67,31 @@ addons/gce_main/
 - Para encontrar classnames: en el editor de Arma, clic derecho en un objeto → *Log → Copy classname*,
   o en el arsenal virtual con la consola de depuración.
 
+## Misiones de la Guerra Civil
+Acércate a Petros y usa **"Misiones de la Guerra Civil"**. Las misiones que no tienen sentido
+en ese momento salen en gris con el motivo, y no se pueden elegir. Solo una misión GCE a la vez.
+
+| Misión | Solo disponible si… | Recompensa |
+|---|---|---|
+| ¡No pasarán! | hay un pueblo **nuestro** en rango y una base enemiga que pueda atacarlo | dinero, RR. HH., apoyo |
+| Volar el puente | hay un puente de carretera en **zona enemiga** en rango (no repetido) | dinero |
+| Colectivizar la finca | controlamos una finca, mina o fábrica en rango | dinero, RR. HH., apoyo |
+| La imprenta | hay una ciudad en rango (a más de 600 m) con apoyo rebelde < 80 % | mucho apoyo |
+| Refugio antiaéreo | tenemos una **estática antiaérea** a < 800 m de un pueblo nuestro y el enemigo tiene aeródromo con aviones | apoyo, dinero por avión derribado |
+| El oro de la República | la costa está a menos de **3 km** del cuartel (`GCE_oroDistanciaMax`) y hay carretera | mucho dinero |
+| Liberar el penal | hay un puesto o base enemiga en rango | RR. HH. (cada preso rescatado) |
+
+"En rango" = la distancia de misiones que tengas configurada en Antistasi.
+
+## Jefe de escuadra
+Mira a un recluta de tu grupo y usa **"Nombrar jefe de escuadra"** (cuesta 100). A partir de ahí él
+reparte los blancos: antitanques a los vehículos, ametralladoras a los grupos y el resto al enemigo
+más cercano, sin amontonarse. Avisa por radio de los vehículos. **Tú sigues mandando el movimiento**
+y el modo de combate (si mandas no disparar, solo apuntan). Solo un jefe por grupo.
+
+## Morral de sanitario
+Mochila del equipo inicial con sitio para el Medikit (en el PBO `gce_uniformes`).
+
 ## Banderas
 Se generan con `python3 tools/make_flags.py` (necesita Pillow) y salen en:
 - `addons/gce_main/data/flags/*_co.paa`: bandera del mástil y de la pantalla de selección.
@@ -73,12 +102,13 @@ Se generan con `python3 tools/make_flags.py` (necesita Pillow) y salen en:
 Para añadir otra bandera, crea una función de dibujo en `tools/make_flags.py` y añádela a `BANDERAS`.
 
 ## Compilar y publicar
-Hay **tres PBO**. Empaqueta cada carpeta de `addons/` con su prefijo y ponlos todos en `@GCE/addons`:
+Hay **cuatro PBO**. Empaqueta cada carpeta de `addons/` con su prefijo y ponlos todos en `@GCE/addons`:
 | Carpeta | Prefijo |
 |---|---|
 | `gce_main` | `GCE\addons\gce_main` |
 | `gce_uniformes` | `GCE\addons\gce_uniformes` |
 | `gce_gorros` | `GCE\addons\gce_gorros` |
+| `gce_misiones` | `GCE\addons\gce_misiones` |
 
 1. Instala **Arma 3 Tools** (Steam → Biblioteca → Herramientas).
 2. Con **Addon Builder**: origen `addons/gce_main`, destino `@GCE/addons`,

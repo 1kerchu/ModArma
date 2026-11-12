@@ -2,6 +2,7 @@
     GCE - Uniformes (PBO separado: si algo falla aquí, las facciones siguen funcionando)
 
     Boinas basadas en H_Beret_blk (boina vanilla).
+    Morral de sanitario basado en B_FieldPack_cbr (mochila vanilla), con espacio para el Medikit.
     Monos de miliciano basados en el mono de trabajo del Arma 3 base (gratis para todos):
       CfgWeapons  U_C_WorkerCoveralls   (objeto del inventario)
       CfgVehicles C_man_w_worker_F      (modelo que se ve puesto)
@@ -15,7 +16,7 @@ class CfgPatches
     {
         name = "GCE - Uniformes";
         author = "GCE";
-        units[] = {"GCE_Miliciano_Mono_Azul", "GCE_Miliciano_Mono_Mahon", "GCE_Miliciano_Mono_Negro", "GCE_Miliciano_Mono_Caqui"};
+        units[] = {"GCE_B_Morral_Sanitario", "GCE_Miliciano_Mono_Azul", "GCE_Miliciano_Mono_Mahon", "GCE_Miliciano_Mono_Negro", "GCE_Miliciano_Mono_Caqui"};
         weapons[] = {"GCE_H_Boina_Roja", "GCE_H_Boina_Negra", "GCE_U_Mono_Azul", "GCE_U_Mono_Mahon", "GCE_U_Mono_Negro", "GCE_U_Mono_Caqui"};
         requiredVersion = 2.20;
         requiredAddons[] = {"A3_Characters_F"};
@@ -25,6 +26,18 @@ class CfgPatches
 
 class CfgVehicles
 {
+    // Morral de sanitario: mochila del Arma base con sitio de sobra para el Medikit (pesa 80)
+    class B_FieldPack_cbr;
+    class GCE_B_Morral_Sanitario : B_FieldPack_cbr
+    {
+        scope = 2;
+        scopeCurator = 2;
+        author = "GCE";
+        displayName = "Morral de sanitario";
+        maximumLoad = 200;
+        mass = 20;
+    };
+
     class C_man_w_worker_F;
     class GCE_Miliciano_Mono_Azul : C_man_w_worker_F
     {
