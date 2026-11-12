@@ -36,6 +36,9 @@ Opcionales (si están cargados, los templates los usan solos):
 ## Estructura
 ```
 mod.cpp                          info que se ve en el launcher
+addons/gce_uniformes/            PBO 2: uniformes propios (monos de miliciano)
+  config.cpp                     GCE_U_Mono_Azul / _Mahon / _Negro / _Caqui
+  data/*_co.paa                  texturas (tools/make_uniforms.py)
 addons/gce_main/
   $PBOPREFIX$                    GCE\addons\gce_main
   config.cpp                     registra los 4 bandos en Antistasi (class A3A >> Templates)
@@ -68,6 +71,9 @@ Se generan con `python3 tools/make_flags.py` (necesita Pillow) y salen en:
 Para añadir otra bandera, crea una función de dibujo en `tools/make_flags.py` y añádela a `BANDERAS`.
 
 ## Compilar y publicar
+Hay **dos PBO**: empaqueta `gce_main` (prefijo `GCE\addons\gce_main`) y `gce_uniformes`
+(prefijo `GCE\addons\gce_uniformes`), los dos en `@GCE/addons`.
+
 1. Instala **Arma 3 Tools** (Steam → Biblioteca → Herramientas).
 2. Con **Addon Builder**: origen `addons/gce_main`, destino `@GCE/addons`,
    y en opciones pon el prefijo `GCE\addons\gce_main`. Se genera `gce_main.pbo`.
@@ -78,7 +84,8 @@ Para añadir otra bandera, crea una función de dibujo en `tools/make_flags.py` 
 
 ## Pendiente (siguientes fases)
 - [x] Banderas propias (rojigualda, tricolor republicana, CNT-FAI) + marcadores de mapa.
-- [ ] Retexturas de uniformes: monos de miliciano, boina roja de requeté, gorro isabelino.
+- [x] Monos de miliciano (azul, mahón, negro, caqui) para CNT-FAI y milicias republicanas.
+- [ ] Pañuelo rojinegro, boina roja de requeté, gorro isabelino.
 - [ ] Material italiano del CTV (no hay en IFA3/Northern Fronts; buscar otro mod gratis o retexturas).
 - [ ] Probar en partida y ajustar classnames que den error en el RPT.
 - [ ] Bando "Rivales" (opcional).

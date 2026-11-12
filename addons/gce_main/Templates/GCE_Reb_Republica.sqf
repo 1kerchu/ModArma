@@ -90,18 +90,46 @@ private _rebUniforms = [
     "U_NORTH_SOV_Obr35_Uniform_Early_Private_4"
 ];
 
-private _dlcUniforms = [];
-
-["uniforms", _rebUniforms + _dlcUniforms] call _fnc_saveToTemplate;
-
-["headgear", [
+private _rebHeadgear = [
     "H_LIB_CIV_Worker_Cap_1",
     "H_LIB_CIV_Worker_Cap_2",
     "H_LIB_CIV_Villager_Cap_1",
     "H_NORTH_SOV_Obr35_Pilotka",
     "H_NORTH_SOV_Obr35_Pilotka_2",
     "H_NORTH_SOV_SSh36_Helmet"
-]] call _fnc_saveToTemplate;
+];
+
+// Monos de miliciano (PBO gce_uniformes). Solo se añaden si está cargado.
+private _monos = ["GCE_U_Mono_Azul","GCE_U_Mono_Mahon","GCE_U_Mono_Negro","GCE_U_Mono_Caqui"]
+    select { isClass (configFile >> "CfgWeapons" >> _x) };
+
+if (isNil "_gceCNT") then {
+    // República: algún mono caqui/azul entre el Ejército Popular
+    _rebUniforms append (_monos select { _x in ["GCE_U_Mono_Caqui","GCE_U_Mono_Mahon"] });
+} else {
+    // CNT-FAI: el mono es el uniforme de la revolución. Sin uniformes soviéticos.
+    _rebUniforms = _monos + _monos + [          // los monos salen el doble de veces
+        "U_LIB_CIV_Citizen_1",
+        "U_LIB_CIV_Citizen_2",
+        "U_LIB_CIV_Citizen_3",
+        "U_LIB_CIV_Citizen_4",
+        "U_LIB_CIV_Citizen_5",
+        "U_LIB_CIV_Citizen_6",
+        "U_LIB_CIV_Citizen_7",
+        "U_LIB_CIV_Citizen_8"
+    ];
+    // gorras de obrero y de campesino; casi ningún casco
+    _rebHeadgear = [
+        "H_LIB_CIV_Worker_Cap_1","H_LIB_CIV_Worker_Cap_2","H_LIB_CIV_Worker_Cap_3","H_LIB_CIV_Worker_Cap_4",
+        "H_LIB_CIV_Villager_Cap_1","H_LIB_CIV_Villager_Cap_2","H_LIB_CIV_Villager_Cap_3","H_LIB_CIV_Villager_Cap_4",
+        "H_NORTH_SOV_Obr35_Pilotka"     // gorrillo
+    ];
+};
+
+private _dlcUniforms = [];
+
+["uniforms", _rebUniforms + _dlcUniforms] call _fnc_saveToTemplate;
+["headgear", _rebHeadgear] call _fnc_saveToTemplate;
 
 /////////////////////
 ///  Identities   ///
@@ -122,6 +150,7 @@ _loadoutData set ["compasses", ["LIB_GER_ItemCompass_deg"]];
 _loadoutData set ["binoculars", ["LIB_Binocular_SU"]];
 
 _loadoutData set ["uniforms", _rebUniforms];
+_loadoutData set ["helmets", _rebHeadgear];
 
 _loadoutData set ["glasses", ["G_LIB_Dienst_Brille", "G_LIB_Dienst_Brille2"]];
 _loadoutData set ["goggles", ["G_LIB_Dust_Goggles"]];
@@ -138,6 +167,7 @@ _loadoutData set ["items_miscEssentials", [] call A3A_fnc_itemset_miscEssentials
 
 private _squadLeaderTemplate = {
     ["uniforms"] call _fnc_setUniform;
+    ["helmets"] call _fnc_setHelmet;
     [selectRandomWeighted [[], 1.25, "glasses", 1, "goggles", 0.75, "facemask", 1]] call _fnc_setFacewear;
 
     ["items_medical_standard"] call _fnc_addItemSet;
@@ -151,6 +181,7 @@ private _squadLeaderTemplate = {
 
 private _riflemanTemplate = {
     ["uniforms"] call _fnc_setUniform;
+    ["helmets"] call _fnc_setHelmet;
     [selectRandomWeighted [[], 1.25, "glasses", 1, "goggles", 0.75, "facemask", 1]] call _fnc_setFacewear;
     
     ["items_medical_standard"] call _fnc_addItemSet;

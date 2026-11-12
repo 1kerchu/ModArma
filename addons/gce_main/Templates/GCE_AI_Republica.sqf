@@ -417,6 +417,11 @@ _policeLoadoutData set ["helmets", ["H_NORTH_SOV_Obr35_Furazhka","H_NORTH_SOV_Ob
 // Milicias del Frente Popular: ropa de calle y gorra de obrero
 _militiaLoadoutData set ["uniforms", ["U_LIB_CIV_Citizen_1","U_LIB_CIV_Citizen_2","U_LIB_CIV_Citizen_3","U_LIB_CIV_Citizen_4","U_LIB_CIV_Citizen_5","U_LIB_CIV_Citizen_6","U_LIB_CIV_Citizen_7","U_LIB_CIV_Citizen_8"]];
 _militiaLoadoutData set ["slUniforms", _uniformesEP];
+// Monos de miliciano (PBO gce_uniformes), si está cargado
+private _monosMilicia = ["GCE_U_Mono_Azul","GCE_U_Mono_Mahon","GCE_U_Mono_Caqui"] select { isClass (configFile >> "CfgWeapons" >> _x) };
+if (_monosMilicia isNotEqualTo []) then {
+    _militiaLoadoutData set ["uniforms", (_militiaLoadoutData get "uniforms") + _monosMilicia + _monosMilicia];
+};
 _militiaLoadoutData set ["helmets", ["H_LIB_CIV_Worker_Cap_1","H_LIB_CIV_Worker_Cap_2","H_LIB_CIV_Worker_Cap_3","H_LIB_CIV_Worker_Cap_4","H_NORTH_SOV_Obr35_Pilotka"]];
 _militiaLoadoutData set ["sniHats", ["H_LIB_CIV_Villager_Cap_1","H_LIB_CIV_Villager_Cap_2"]];
 _militiaLoadoutData set ["slHat", ["H_NORTH_SOV_Obr35_Pilotka_2"]];

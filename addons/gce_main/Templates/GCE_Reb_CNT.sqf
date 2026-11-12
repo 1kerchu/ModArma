@@ -1,7 +1,9 @@
 /*
     GCE - Variante rebelde: Milicias CNT-FAI
-    Usa todo lo de la República y solo cambia el nombre y la bandera.
+    Mismo armamento y tienda que la República; cambia nombre, bandera y vestuario
+    (monos de miliciano y gorras de obrero en lugar de uniforme soviético).
 */
+private _gceCNT = true;     // activa el vestuario de las milicias (monos, gorras)
 #include "GCE_Reb_Republica.sqf"
 
 ["name", "Milicias Confederales CNT-FAI"] call _fnc_saveToTemplate;
