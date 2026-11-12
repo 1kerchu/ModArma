@@ -82,7 +82,7 @@ private _faltanOpc = [];
 private _faltanRutas = _rutas select {{ !fileExists _x }};
 
 // PBO del mod cargados
-private _pbos = ["GCE_main", "GCE_uniformes", "GCE_gorros", "GCE_misiones", "GCE_vehiculos"];
+private _pbos = ["GCE_main", "GCE_uniformes", "GCE_gorros", "GCE_misiones", "GCE_vehiculos", "GCE_mapa"];
 private _pbosNo = _pbos select {{ !isClass (configFile >> "CfgPatches" >> _x) }};
 
 // bases retexturizadas: ¿admiten cambiar la textura?
@@ -96,7 +96,7 @@ private _sel = [
 }};
 
 private _txt = format ["GCE - COMPROBACIÓN<br/>Clases revisadas: %1<br/>Archivos revisados: %2<br/><br/>", count _clases + count _marcadores, count _rutas];
-_txt = _txt + (if (_pbosNo isEqualTo []) then {{ "PBO: los 5 cargados<br/>" }} else {{ format ["<t color='#FF6060'>PBO NO cargados: %1</t><br/>", _pbosNo] }});
+_txt = _txt + (if (_pbosNo isEqualTo []) then {{ "PBO: los 6 cargados<br/>" }} else {{ format ["<t color='#FF6060'>PBO NO cargados: %1</t><br/>", _pbosNo] }});
 _txt = _txt + (if (_faltan isEqualTo []) then {{ "<t color='#60FF60'>No falta ninguna clase.</t><br/>" }} else {{ format ["<t color='#FF6060'>FALTAN %1 clases:</t><br/>%2<br/>", count _faltan, _faltan joinString ", "] }});
 _txt = _txt + (if (_faltanRutas isEqualTo []) then {{ "<t color='#60FF60'>No falta ningún archivo.</t><br/>" }} else {{ format ["<t color='#FF6060'>FALTAN %1 archivos:</t><br/>%2<br/>", count _faltanRutas, _faltanRutas joinString "<br/>"] }});
 if (_faltanOpc isNotEqualTo []) then {{ _txt = _txt + format ["<br/>Mods opcionales no cargados (no pasa nada): %1<br/>", count _faltanOpc] }};

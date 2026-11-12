@@ -45,6 +45,7 @@ addons/gce_misiones/             PBO 4: misiones nuevas y jefe de escuadra (sirv
   functions/jefe/                jefe de escuadra
 addons/gce_vehiculos/            PBO 5 (necesita Northern Fronts): copias de sus vehículos con foto
   data/previews/*.jpg            fotos del menú de compra (tools/make_previews.py)
+addons/gce_mapa/                 PBO 6: devuelve los colores normales del mapa (IFA3 pone los árboles en verde fosforito)
 addons/gce_gorros/               PBO 3 (necesita Northern Fronts): gorrillos
   config.cpp                     GCE_H_Gorrillo_Negro / _Rojo (retextura de la pilotka)
 addons/gce_main/
@@ -144,7 +145,7 @@ Se generan con `python3 tools/make_flags.py` (necesita Pillow) y salen en:
 Para añadir otra bandera, crea una función de dibujo en `tools/make_flags.py` y añádela a `BANDERAS`.
 
 ## Compilar y publicar
-Hay **cinco PBO**. Empaqueta cada carpeta de `addons/` con su prefijo y ponlos todos en `@GCE/addons`:
+Hay **seis PBO**. Empaqueta cada carpeta de `addons/` con su prefijo y ponlos todos en `@GCE/addons`:
 | Carpeta | Prefijo |
 |---|---|
 | `gce_main` | `GCE\addons\gce_main` |
@@ -152,6 +153,7 @@ Hay **cinco PBO**. Empaqueta cada carpeta de `addons/` con su prefijo y ponlos t
 | `gce_gorros` | `GCE\addons\gce_gorros` |
 | `gce_misiones` | `GCE\addons\gce_misiones` |
 | `gce_vehiculos` | `GCE\addons\gce_vehiculos` |
+| `gce_mapa` | `GCE\addons\gce_mapa` |
 
 1. Instala **Arma 3 Tools** (Steam → Biblioteca → Herramientas).
 2. Con **Addon Builder**: origen `addons/gce_main`, destino `@GCE/addons`,
