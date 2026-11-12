@@ -5,11 +5,20 @@ Española (1936-1939). Todo es **gratuito**.
 
 | Rol en Antistasi | Bando | Archivo |
 |---|---|---|
-| Ocupantes | Ejército Nacional (Regulares, Falange, Requetés) | `GCE_AI_Nacionales.sqf` |
+| Ocupantes / Invasores | Ejército Nacional (Regulares, Falange, Requetés) | `GCE_AI_Nacionales.sqf` |
+| Ocupantes (modo anarquista) | República: Ejército Popular, Guardia de Asalto, Brigadas Internacionales | `GCE_AI_Republica.sqf` |
 | Invasores | Legión Cóndor + CTV | `GCE_AI_Condor.sqf` |
 | Rebeldes (jugadores) | República (Ejército Popular, Brigadas Internacionales) | `GCE_Reb_Republica.sqf` |
 | Rebeldes (alternativa) | Milicias CNT-FAI (mismo equipo, bandera rojinegra) | `GCE_Reb_CNT.sqf` |
 | Civiles | Población española de los años 30 | `GCE_CIV.sqf` |
+
+### Modos de juego
+| Modo | Ocupantes | Invasores | Rebeldes |
+|---|---|---|---|
+| Clásico (preseleccionado) | GCE Ejército Nacional | GCE Legión Cóndor | GCE República |
+| Anarquista | GCE República (gobierno) | GCE Ejército Nacional (invasor) | GCE Milicias CNT-FAI |
+
+Puedes mezclarlos como quieras en la pestaña de facciones de Antistasi.
 
 Mapa recomendado: **Altis** (los bandos GCE salen arriba de la lista en ese mapa).
 

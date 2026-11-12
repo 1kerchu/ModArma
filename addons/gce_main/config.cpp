@@ -81,6 +81,26 @@ class A3A
             description = "Intervención extranjera: Legión Cóndor alemana y CTV italiano. Mucha aviación.";
         };
 
+        // ---- Modo anarquista: República ocupante, Nacionales invasores, CNT-FAI rebeldes ----
+        class GCE_Republica_IA : GCE_Base
+        {
+            priority = 29;         // no se preselecciona; elígelo a mano
+            side = "Occ";
+            name = "GCE República (gobierno)";
+            flagTexture = "\GCE\addons\gce_main\data\flags\gce_republica_co.paa";
+            file = "GCE_AI_Republica";
+            description = "El gobierno republicano como ocupante: Ejército Popular, Guardia de Asalto y Brigadas Internacionales. Para jugar con las Milicias CNT-FAI.";
+        };
+
+        class GCE_Nacionales_Invasor : GCE_Nacionales
+        {
+            priority = 29;         // no se preselecciona; elígelo a mano
+            side = "Inv";
+            name = "GCE Ejército Nacional (invasor)";
+            description = "El bando sublevado como invasor. Úsalo con 'GCE República (gobierno)' de ocupante.";
+        };
+
+        // ---- Rebeldes ----
         class GCE_Republica : GCE_Base
         {
             side = "Reb";
@@ -92,6 +112,7 @@ class A3A
 
         class GCE_CNT : GCE_Base
         {
+            priority = 29;         // no se preselecciona; elígelo a mano
             side = "Reb";
             name = "GCE Milicias CNT-FAI";
             flagTexture = "\GCE\addons\gce_main\data\flags\gce_cnt_co.paa";
