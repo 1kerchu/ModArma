@@ -83,8 +83,14 @@ en ese momento salen en gris con el motivo, y no se pueden elegir. Solo una misi
 
 "En rango" = la distancia de misiones que tengas configurada en Antistasi.
 
-- **¡No pasarán!** y **Refugio antiaéreo** no empiezan hasta que un jugador llega al pueblo
-  (90 s / 2 min después), con un máximo de 10 minutos de espera.
+- **¡No pasarán!**: zona de defensa marcada y barricadas de sacos en las 3 entradas; empieza
+  90 s después de que llegue un jugador (máx. 10 min). Se unen 5 voluntarios del pueblo. Las
+  oleadas llegan en camiones por carretera y desembarcan a ~380 m; las pares atacan por un flanco
+  y la última trae grupo por el flanco y blindado (guerra avanzada). Un grupo que pierde el 60 %
+  se retira. Cada minuto, aviso con el estado. La recompensa sube con los voluntarios vivos y baja
+  con los civiles muertos y si el enemigo llegó al centro.
+- **Refugio antiaéreo** no empieza hasta que un jugador llega al pueblo (2 min después), con un
+  máximo de 10 minutos de espera.
 - **Volar el puente** solo cuenta cargas puestas por rebeldes, y le quita recursos de ataque al enemigo.
 - **Liberar el penal** termina cuando todos los presos liberados llegan al cuartel.
 - Cada misión tiene un **tiempo de espera** antes de repetirse: puente 15 min, finca e imprenta 20,
