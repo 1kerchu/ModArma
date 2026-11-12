@@ -4,7 +4,7 @@
 
     Dependencias (todas gratuitas en el Workshop):
       - Antistasi Ultimate - Mod
-      - IFA3 AIO Lite
+      - IFA3 AIO
       - Northern Fronts
     Opcionales (si están cargados se usan automáticamente):
       - WW2 Armored Cars / WW2 Tanks (FA_WW2_*)

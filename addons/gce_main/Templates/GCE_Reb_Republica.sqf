@@ -1,7 +1,7 @@
 /*
     GCE - Guerra Civil Española para Antistasi Ultimate
     Bando: REBELDES (jugadores) -> República (milicias CNT-FAI / UGT / POUM, Ejército Popular, Brigadas Internacionales)
-    Requiere: IFA3 AIO Lite + Northern Fronts
+    Requiere: IFA3 AIO + Northern Fronts
     Basado en NFtS_Reb_FIN_Temperate.sqf de Antistasi Ultimate (licencia MIT).
 
     Todo lo que hay aquí es lo que los jugadores pueden COMPRAR o tienen DESDE EL INICIO.

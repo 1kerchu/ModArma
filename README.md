@@ -15,7 +15,7 @@ Mapa recomendado: **Altis** (los bandos GCE salen arriba de la lista en ese mapa
 ## Mods necesarios (Steam Workshop, gratis)
 1. CBA_A3
 2. Antistasi Ultimate - Mod
-3. IFA3 AIO Lite
+3. IFA3 AIO
 4. Northern Fronts
 
 Opcionales (si están cargados, los templates los usan solos):

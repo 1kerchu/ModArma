@@ -1,7 +1,7 @@
 /*
     GCE - Guerra Civil Española para Antistasi Ultimate
     Bando: OCUPANTES -> Ejército Nacional (sublevados)
-    Requiere: IFA3 AIO Lite + Northern Fronts
+    Requiere: IFA3 AIO + Northern Fronts
     Basado en IFA_AI_WEH_Temperate.sqf de Antistasi Ultimate (licencia MIT).
 */
 
