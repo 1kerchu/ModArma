@@ -9,6 +9,13 @@ if (_entrada isEqualTo []) exitWith {};
 if (!_ok) exitWith {
     [petros, "hint", format ["%1: %2", _nombre, _motivo], "Misiones"] remoteExec ["A3A_fnc_commsMP", owner _jugador];
 };
+// tiempo de espera antes de poder repetir esta misión (minutos)
+private _espera = createHashMapFromArray [
+    ["noPasaran", 30], ["puente", 15], ["finca", 20], ["imprenta", 20],
+    ["refugio", 30], ["oro", 90], ["penal", 30]
+];
+if (isNil "GCE_esperas") then { GCE_esperas = createHashMap };
+GCE_esperas set [_id, time + 60 * (_espera getOrDefault [_id, 20])];
 GCE_misionActiva = _nombre;
 publicVariable "GCE_misionActiva";
 [_datos, _nombre] spawn (missionNamespace getVariable ("GCE_fnc_m_" + _id));

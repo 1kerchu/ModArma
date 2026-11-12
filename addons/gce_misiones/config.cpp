@@ -48,6 +48,7 @@ class CfgFunctions
             class taskCreate {};
             class endMission {};
             class morralMedico {};
+            class waitArrival {};
         };
         class menu
         {

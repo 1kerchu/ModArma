@@ -26,7 +26,10 @@ private _exito = false;
 private _limite = time + 2700;
 waitUntil {
     sleep 2;
-    private _cargas = allMines select { _x distance2D _p < 20 };
+    // solo cuentan las cargas puestas por rebeldes (no las minas del enemigo)
+    private _cargas = [];
+    { _cargas append (getAllOwnedMines _x) } forEach (allUnits select { side group _x == teamPlayer });
+    _cargas = _cargas select { _x distance2D _p < 20 };
     if (_cargas isNotEqualTo []) then { _armado = true };
     if (_armado && {_cargas isEqualTo []}) then { _exito = true };
     _exito || {time > _limite}
@@ -36,8 +39,9 @@ if (_exito) then {
     GCE_puentesVolados pushBack _p;
     private _fuego = createVehicle ["test_EmptyObjectForFireBig", _p, [], 0, "CAN_COLLIDE"];
     [_tid, "SUCCEEDED"] call GCE_fnc_endMission;
-    ["¡El puente ha volado! Tendrán que dar un buen rodeo.", "Volar el puente"] call GCE_fnc_comms;
+    ["¡El puente ha volado! Sus refuerzos tendrán que dar un buen rodeo.", "Volar el puente"] call GCE_fnc_comms;
     [600, 0, "", 0, 10] call GCE_fnc_reward;
+    [-200, _lado, "attack"] call A3A_fnc_addEnemyResources;   // menos recursos para atacarnos
     [_fuego] spawn { sleep 600; deleteVehicle (_this select 0) };
 } else {
     [_tid, "FAILED"] call GCE_fnc_endMission;

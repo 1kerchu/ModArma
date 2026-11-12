@@ -10,10 +10,13 @@ private _nom = [_ciudad] call A3A_fnc_localizar;
 private _f = [_lado] call GCE_fnc_faction;
 
 private _tid = [format ["¡No pasarán! — %1", _nom],
-    format ["%1 va a atacar %2. Las primeras tropas llegan en 2 minutos. Aguanta todas las oleadas sin abandonar el pueblo.", _f get "name", _nom],
+    format ["%1 prepara un ataque sobre %2. Ve al pueblo: atacarán 90 segundos después de que llegues (como mucho en 10 minutos). Aguanta todas las oleadas sin abandonarlo.", _f get "name", _nom],
     _c, "defend"] call GCE_fnc_taskCreate;
-[format ["¡%1 viene a por %2! Todos a las barricadas: llegan en 2 minutos.", _f get "name", _nom], "¡No pasarán!"] call GCE_fnc_comms;
-sleep 120;
+[format ["¡%1 va a por %2! Todos a las barricadas.", _f get "name", _nom], "¡No pasarán!"] call GCE_fnc_comms;
+if ([_c, 500, 600] call GCE_fnc_waitArrival) then {
+    ["Ya estáis en posición. Atacan en 90 segundos.", "¡No pasarán!"] call GCE_fnc_comms;
+    sleep 90;
+};
 
 private _oleadas = 3 + floor (tierWar / 4);
 private _grupos = [];

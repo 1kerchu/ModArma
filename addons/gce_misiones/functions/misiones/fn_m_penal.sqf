@@ -44,9 +44,13 @@ private _guardia = [_c getPos [30, random 360], _lado, "medium"] call GCE_fnc_sp
 private _limite = time + 3600;
 waitUntil {
     sleep 5;
-    private _vivos = _presos select { alive _x };
-    private _llegados = _vivos select { _x distance2D _hq < 60 };
-    _vivos isEqualTo [] || {count _llegados == count _vivos} || {time > _limite}
+    // termina cuando todos los presos LIBERADOS que siguen vivos han llegado al cuartel
+    // (si dejáis a alguno atrás, no hay que esperar por él)
+    private _libres = _presos select { alive _x && {_x getVariable ["GCE_libre", false]} };
+    private _llegados = _libres select { _x distance2D _hq < 60 };
+    ({ alive _x } count _presos) == 0
+    || {_libres isNotEqualTo [] && {count _llegados == count _libres}}
+    || {time > _limite}
 };
 
 private _rescatados = { alive _x && {_x distance2D _hq < 60} } count _presos;

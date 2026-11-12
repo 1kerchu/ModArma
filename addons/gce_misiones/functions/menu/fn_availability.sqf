@@ -95,4 +95,14 @@ private _c7 = (outposts + milbases) select { (_x call _esEnemigo) && {_x call _e
 ["penal", "Liberar el penal", _c7 apply {[_x]},
     format ["no hay puestos enemigos a menos de %1 km", _km]] call _anadir;
 
+// Tiempo de espera: una misión recién hecha no se puede repetir enseguida
+if (isNil "GCE_esperas") then { GCE_esperas = createHashMap };
+{
+    private _hasta = GCE_esperas getOrDefault [_x select 0, 0];
+    if ((_x select 2) && {time < _hasta}) then {
+        _x set [2, false];
+        _x set [3, format ["disponible en %1 min", ceil ((_hasta - time) / 60)]];
+    };
+} forEach _res;
+
 _res

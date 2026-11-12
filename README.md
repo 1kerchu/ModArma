@@ -83,6 +83,13 @@ en ese momento salen en gris con el motivo, y no se pueden elegir. Solo una misi
 
 "En rango" = la distancia de misiones que tengas configurada en Antistasi.
 
+- **¡No pasarán!** y **Refugio antiaéreo** no empiezan hasta que un jugador llega al pueblo
+  (90 s / 2 min después), con un máximo de 10 minutos de espera.
+- **Volar el puente** solo cuenta cargas puestas por rebeldes, y le quita recursos de ataque al enemigo.
+- **Liberar el penal** termina cuando todos los presos liberados llegan al cuartel.
+- Cada misión tiene un **tiempo de espera** antes de repetirse: puente 15 min, finca e imprenta 20,
+  No pasarán, refugio y penal 30, el oro 90.
+
 ## Jefe de escuadra
 Mira a un recluta de tu grupo y usa **"Nombrar jefe de escuadra"** (cuesta 100). A partir de ahí él
 reparte los blancos: antitanques a los vehículos, ametralladoras a los grupos y el resto al enemigo

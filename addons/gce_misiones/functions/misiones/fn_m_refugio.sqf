@@ -10,16 +10,16 @@ private _nom = [_ciudad] call A3A_fnc_localizar;
 
 // Refugio: el edificio grande más cercano al centro
 private _casas = (nearestObjects [_c, ["House"], 200]) select { count ([_x] call BIS_fnc_buildingPositions) >= 4 };
-private _ref = if (_casas isEqualTo []) then { _c } else { getPos (_casas select 0) };
+private _ref = if (_casas isEqualTo []) then { _c } else { ([_casas select 0] call BIS_fnc_buildingPositions) select 0 };
 private _mrk = createMarker ["GCE_refugio", _ref];
 _mrk setMarkerType "mil_flag";
 _mrk setMarkerColor "ColorBlue";
 _mrk setMarkerText "Refugio";
 
 private _tid = [format ["Refugio antiaéreo — %1", _nom],
-    format ["La aviación enemiga va a bombardear %1. Lleva a los civiles al refugio marcado en el mapa (acción '¡Sígueme al refugio!') y derriba los aviones con la antiaérea. Llegan en 2 minutos.", _nom],
+    format ["La aviación enemiga va a bombardear %1. Ve al pueblo, lleva a los civiles al refugio marcado en el mapa (acción '¡Sígueme al refugio!') y derriba los aviones con la antiaérea. Los aviones llegan 2 minutos después de que llegues (como mucho en 10 minutos).", _nom],
     _ref, "defend"] call GCE_fnc_taskCreate;
-[format ["¡Aviación enemiga sobre %1 en 2 minutos! Todos al refugio.", _nom], "Refugio antiaéreo"] call GCE_fnc_comms;
+[format ["¡Nos avisan de un bombardeo sobre %1! Id al pueblo.", _nom], "Refugio antiaéreo"] call GCE_fnc_comms;
 
 // Civiles
 private _tipoCiv = A3A_faction_civ get "unitMan";
@@ -38,6 +38,9 @@ for "_i" from 1 to 10 do {
 };
 
 // Bucle de los civiles que siguen a un jugador
+if ([_c, 500, 600] call GCE_fnc_waitArrival) then {
+    ["¡Aviones en 2 minutos! Todos al refugio.", "Refugio antiaéreo"] call GCE_fnc_comms;
+};
 GCE_refugioActivo = true;
 private _seguir = [_civs, _ref] spawn {
     params ["_civs", "_ref"];
