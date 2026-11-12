@@ -49,6 +49,8 @@ private _clases = [
     "GCE_U_Mono_Caqui",
     "GCE_U_Mono_Mahon",
     "GCE_U_Mono_Negro",
+    "GCE_jefeEnemigos",
+    "GCE_jefeLatido",
     "GCE_main",
     "G_LIB_Dienst_Brille",
     "G_LIB_Dienst_Brille2",

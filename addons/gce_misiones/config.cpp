@@ -98,6 +98,7 @@ class CfgFunctions
             class jefeNombrar {};
             class jefeRetirar {};
             class jefeLoop {};
+            class jefeEstado {};
         };
     };
 };

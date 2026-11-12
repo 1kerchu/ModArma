@@ -30,3 +30,11 @@ _ids pushBack (player addAction [
     "call GCE_fnc_brigadistaCond"
 ]);
 player setVariable ["GCE_acciones", _ids];
+
+// Reactivar jefes de escuadra que se hayan quedado sin proceso (p. ej. al reaparecer)
+{
+    if (alive _x && {_x getVariable ["GCE_esJefe", false]} && {local _x}
+        && {time - (_x getVariable ["GCE_jefeLatido", -1000]) > 10}) then {
+        [_x] spawn GCE_fnc_jefeLoop;
+    };
+} forEach units group player;

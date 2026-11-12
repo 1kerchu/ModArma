@@ -106,6 +106,8 @@ Mira a un recluta de tu grupo y usa **"Nombrar jefe de escuadra"** (cuesta 100).
 reparte los blancos: antitanques a los vehículos, ametralladoras a los grupos y el resto al enemigo
 más cercano, sin amontonarse. Avisa por radio de los vehículos. **Tú sigues mandando el movimiento**
 y el modo de combate (si mandas no disparar, solo apuntan). Solo un jefe por grupo.
+Da las órdenes por radio ("Pérez y Gómez: ¡fuego al grupo enemigo, a las 2, 180 metros!").
+Para ver qué está haciendo: `[] call GCE_fnc_jefeEstado` en la consola.
 
 ## Brigadas Internacionales
 Llegan al alcanzar el **nivel de guerra 3** (y otra oleada en el 6): aviso a todos y +6 de recursos
