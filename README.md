@@ -90,7 +90,9 @@ más cercano, sin amontonarse. Avisa por radio de los vehículos. **Tú sigues m
 y el modo de combate (si mandas no disparar, solo apuntan). Solo un jefe por grupo.
 
 ## Morral de sanitario
-Mochila del equipo inicial con sitio para el Medikit (en el PBO `gce_uniformes`).
+Mochila del equipo inicial (ilimitada) con sitio para el Medikit (en el PBO `gce_uniformes`).
+Los **médicos** rebeldes que recluta la IA la llevan puesta automáticamente, con su material
+y un Medikit (lo hace `gce_misiones`). Solo se añade al arsenal en partidas nuevas.
 
 ## Banderas
 Se generan con `python3 tools/make_flags.py` (necesita Pillow) y salen en:

@@ -7,6 +7,14 @@ if (isServer) then {
     publicVariable "GCE_misionActiva";
     GCE_puentesVolados = [];
     if (isNil "GCE_oroDistanciaMax") then { GCE_oroDistanciaMax = 3000 };   // metros hasta la costa
+
+    // Médico rebelde: Antistasi lanza este evento después de equipar a cada recluta
+    ["A3A_event_serverInitRebelUnit", {
+        params ["_u"];
+        if (!isNil "A3A_faction_reb" && {(_u getVariable ["unitType", ""]) isEqualTo (A3A_faction_reb get "unitMedic")}) then {
+            [_u] remoteExec ["GCE_fnc_morralMedico", _u];
+        };
+    }] call CBA_fnc_addEventHandler;
 };
 
 if (!hasInterface) exitWith {};

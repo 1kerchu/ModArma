@@ -47,6 +47,7 @@ class CfgFunctions
             class cleanup {};
             class taskCreate {};
             class endMission {};
+            class morralMedico {};
         };
         class menu
         {
