@@ -132,6 +132,11 @@ las clases y archivos que usa el mod, qué PBO están cargados y si las texturas
 pueden cambiar. El informe sale en pantalla, en el `.rpt` y se copia al portapapeles.
 Si cambias los templates, regenera la lista con `python3 tools/gen_verificar.py`.
 
+## Radio
+Para oír los avisos del grupo por radio hay que llevar una radio. Aunque sea fuera de época, la
+`ItemRadio` está **ilimitada en el arsenal** desde el principio, el jugador la recibe al entrar o
+reaparecer, y todos los soldados rebeldes la llevan. Con TFAR o ACRE no se toca nada.
+
 ## Morral de sanitario
 Mochila del equipo inicial (ilimitada) con sitio para el Medikit (en el PBO `gce_uniformes`).
 Los **médicos** rebeldes que recluta la IA la llevan puesta automáticamente, con su material

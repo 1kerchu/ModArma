@@ -13,6 +13,8 @@ if (isServer) then {
         if (!isNil "A3A_faction_reb" && {(_u getVariable ["unitType", ""]) isEqualTo (A3A_faction_reb get "unitMedic")}) then {
             [_u] remoteExec ["GCE_fnc_morralMedico", _u];
         };
+        // todos los soldados rebeldes con radio (para oír y dar avisos por radio)
+        [_u] remoteExec ["GCE_fnc_darRadio", _u];
     }] call CBA_fnc_addEventHandler;
 
     [] spawn GCE_fnc_brigadasMonitor;
@@ -24,5 +26,6 @@ if (!hasInterface) exitWith {};
 [] spawn {
     waitUntil { sleep 2; !isNull player && {!isNil "teamPlayer"} && {!isNil "A3A_faction_reb"} && {!isNil "petros"} };
     [] call GCE_fnc_addPlayerActions;
-    player addEventHandler ["Respawn", { [] spawn { sleep 1; [] call GCE_fnc_addPlayerActions } }];
+    [player] call GCE_fnc_darRadio;
+    player addEventHandler ["Respawn", { [] spawn { sleep 1; [] call GCE_fnc_addPlayerActions; [player] call GCE_fnc_darRadio } }];
 };

@@ -83,6 +83,13 @@ private _initialRebelEquipment = [
     "LIB_Binocular_SU"
 ];
 
+// Radio ilimitada desde el principio (sin ella no se oyen los avisos del grupo por radio).
+// Fuera de época, pero mejora mucho la comunicación. Con TFAR o ACRE se usan sus radios.
+private _sinRadioMod = !(missionNamespace getVariable ["A3A_hasTFAR", false])
+    && {!(missionNamespace getVariable ["A3A_hasTFARBeta", false])}
+    && {!(missionNamespace getVariable ["A3A_hasACRE", false])};
+if (_sinRadioMod) then {_initialRebelEquipment append ["ItemRadio"]};
+
 // Morral de sanitario (PBO gce_uniformes): cabe el Medikit para reanimar
 if (isClass (configFile >> "CfgVehicles" >> "GCE_B_Morral_Sanitario")) then {_initialRebelEquipment append ["GCE_B_Morral_Sanitario"]};
 
@@ -170,6 +177,7 @@ _loadoutData set ["maps", ["ItemMap"]];
 _loadoutData set ["watches", ["LIB_GER_ItemWatch"]];
 _loadoutData set ["compasses", ["LIB_GER_ItemCompass_deg"]];
 _loadoutData set ["binoculars", ["LIB_Binocular_SU"]];
+_loadoutData set ["radios", ["ItemRadio"]];
 
 _loadoutData set ["uniforms", _rebUniforms];
 _loadoutData set ["helmets", _rebHeadgear];
@@ -198,6 +206,7 @@ private _squadLeaderTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
     ["binoculars"] call _fnc_addBinoculars;
 };
 
@@ -212,6 +221,7 @@ private _riflemanTemplate = {
     ["maps"] call _fnc_addMap;
     ["watches"] call _fnc_addWatch;
     ["compasses"] call _fnc_addCompass;
+    ["radios"] call _fnc_addRadio;
 };
 
 private _prefix = "militia";
