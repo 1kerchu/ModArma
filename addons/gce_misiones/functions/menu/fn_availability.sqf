@@ -38,10 +38,11 @@ _c2 = _c2 select {
 ["puente", "Volar el puente", _c2 apply {[_x]},
     format ["no hay puentes en zona enemiga a menos de %1 km", _km]] call _anadir;
 
-// 3. Colectivizar la finca: recurso o fábrica NUESTRA, cerca, y con enemigo que pueda contraatacar.
-private _c3 = (resourcesX + factories) select { (_x call _esNuestro) && {_x call _enRango} && {([getMarkerPos _x] call GCE_fnc_enemyBase) isNotEqualTo []} };
-["finca", "Colectivizar la finca", _c3 apply {[_x]},
-    "no controlamos ninguna finca, mina o fábrica cerca"] call _anadir;
+// 3. Colectivizar la finca: recurso o fábrica ENEMIGA cerca. Primero se conquista y luego se
+//    defiende del contraataque mientras se colectiviza.
+private _c3 = (resourcesX + factories) select { (_x call _esEnemigo) && {_x call _enRango} };
+["finca", "Colectivizar la finca (tomarla y defenderla)", _c3 apply {[_x]},
+    format ["no hay fincas, minas ni fábricas enemigas a menos de %1 km", _km]] call _anadir;
 
 // 4. La imprenta: ciudad a más de 600 m del cuartel, en rango, donde nuestro apoyo sea bajo (< 80 %).
 private _c4 = citiesX select {

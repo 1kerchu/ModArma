@@ -75,7 +75,7 @@ en ese momento salen en gris con el motivo, y no se pueden elegir. Solo una misi
 |---|---|---|
 | ¡No pasarán! | hay un pueblo **nuestro** en rango y una base enemiga que pueda atacarlo | dinero, RR. HH., apoyo |
 | Volar el puente | hay un puente de carretera en **zona enemiga** en rango (no repetido) | dinero |
-| Colectivizar la finca | controlamos una finca, mina o fábrica en rango | dinero, RR. HH., apoyo |
+| Colectivizar la finca | hay una finca, mina o fábrica **enemiga** en rango: primero la tomas (60 min) y luego aguantas 10 min el contraataque | dinero, RR. HH., apoyo |
 | La imprenta | hay una ciudad en rango (a más de 600 m) con apoyo rebelde < 80 % | mucho apoyo |
 | Refugio antiaéreo | tenemos una **estática antiaérea** a < 800 m de un pueblo nuestro y el enemigo tiene aeródromo con aviones | apoyo, dinero por avión derribado |
 | El oro de la República | la costa está a menos de **3 km** del cuartel (`GCE_oroDistanciaMax`) y hay carretera | mucho dinero |
