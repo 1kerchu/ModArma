@@ -1,0 +1,163 @@
+/*
+    GCE - Guerra Civil Española para Antistasi Ultimate
+    Bando: CIVILES -> población española de los años 30
+    Basado en IFA_CIV.sqf de Antistasi Ultimate (licencia MIT).
+*/
+
+//////////////////////////
+//       Vehicles       //
+//////////////////////////    
+
+["vehiclesCivCar", [
+    "LIB_GazM1", 1
+    , "LIB_GazM1_dirty", 1
+    ]] call _fnc_saveToTemplate;
+
+["vehiclesCivIndustrial", [
+    "LIB_Zis5v", 1
+    , "NORTH_FIN_FordV8", 1
+]] call _fnc_saveToTemplate;
+
+["vehiclesCivBoat", [
+    "LIB_LCA", 0.1
+]] call _fnc_saveToTemplate;
+
+["vehiclesCivRepair", [
+    "LIB_Zis6_Parm", 0.1
+]] call _fnc_saveToTemplate;
+
+["vehiclesCivMedical", [
+    "LIB_Zis5v_Med", 0.1
+]] call _fnc_saveToTemplate;
+
+["vehiclesCivFuel", [
+    "LIB_Zis5v_Fuel", 0.1
+]] call _fnc_saveToTemplate;
+
+/////////////////////
+///  Identities   ///
+/////////////////////
+
+["faces", ["GreekHead_A3_01","GreekHead_A3_02","GreekHead_A3_03","GreekHead_A3_04","GreekHead_A3_05","GreekHead_A3_06","GreekHead_A3_07","GreekHead_A3_08","GreekHead_A3_09"]] call _fnc_saveToTemplate;
+
+//////////////////////////
+//       Loadouts       //
+//////////////////////////
+
+private _civUniforms = [
+    "U_LIB_CIV_Citizen_1",
+    "U_LIB_CIV_Citizen_2",
+    "U_LIB_CIV_Citizen_3",
+    "U_LIB_CIV_Citizen_4",
+    "U_LIB_CIV_Citizen_5",
+    "U_LIB_CIV_Citizen_6",
+    "U_LIB_CIV_Citizen_7",
+    "U_LIB_CIV_Citizen_8"
+];
+
+private _pressUniforms = [
+    "U_LIB_CIV_Functionary_1",
+    "U_LIB_CIV_Functionary_2",
+    "U_LIB_CIV_Functionary_3",
+    "U_LIB_CIV_Functionary_4"
+    ];            //Uniforms given to Press/Journalists
+
+private _workerUniforms = [
+    "U_LIB_CIV_Doctor",
+    "U_LIB_CIV_Assistant",
+    "U_LIB_CIV_Assistant_2",
+    "U_LIB_CIV_Citizen_1",
+    "U_LIB_CIV_Citizen_2",
+    "U_LIB_CIV_Citizen_3",
+    "U_LIB_CIV_Citizen_4",
+    "U_LIB_CIV_Citizen_5",
+    "U_LIB_CIV_Citizen_6",
+    "U_LIB_CIV_Citizen_7",
+    "U_LIB_CIV_Citizen_8"
+    ];           //Uniforms given to Workers at Factories/Resources
+
+private _vipUniforms = [
+    "U_LIB_CIV_Schoolteacher",
+    "U_LIB_CIV_Schoolteacher_2"
+];
+
+["uniforms", _civUniforms + _pressUniforms + _workerUniforms + _vipUniforms] call _fnc_saveToTemplate;          //Uniforms given to the Arsenal, Allowed for Undercover and given to Rebel Ai that go Undercover
+
+_civHats = [
+    "H_LIB_CIV_Villager_Cap_1",
+    "H_LIB_CIV_Villager_Cap_2",
+    "H_LIB_CIV_Villager_Cap_3",
+    "H_LIB_CIV_Villager_Cap_4",
+    "H_LIB_CIV_Worker_Cap_1",
+    "H_LIB_CIV_Worker_Cap_2",
+    "H_LIB_CIV_Worker_Cap_3",
+    "H_LIB_CIV_Worker_Cap_4"
+    ];
+
+["headgear", _civHats] call _fnc_saveToTemplate;            //Headgear given to Normal Civs, Workers, Undercover Rebels.
+
+
+private _loadoutData = call _fnc_createLoadoutData;
+
+_loadoutData set ["uniforms", _civUniforms];
+_loadoutData set ["pressUniforms", _pressUniforms];
+_loadoutData set ["workerUniforms", _workerUniforms];
+_loadoutData set ["helmets", _civHats];
+_loadoutData set ["pressHelmets", ["H_LIB_CIV_Villager_Cap_1", "H_LIB_CIV_Villager_Cap_2", "H_LIB_CIV_Villager_Cap_3", "H_LIB_CIV_Villager_Cap_4"]];
+_loadoutData set ["workerHelmets", ["", "H_LIB_CIV_Worker_Cap_1", "H_LIB_CIV_Worker_Cap_2", "H_LIB_CIV_Worker_Cap_3", "H_LIB_CIV_Worker_Cap_4"]];
+_loadoutData set ["facewear", ["G_LIB_Dienst_Brille","G_LIB_Dienst_Brille2","G_LIB_GER_Gloves1","G_LIB_GER_Gloves2","G_LIB_GER_Gloves3"]];
+
+_loadoutData set ["maps", ["ItemMap"]];
+_loadoutData set ["vipUniforms", _vipUniforms];
+_loadoutData set ["sidearms", ["LIB_M1896", "LIB_M1895", "LIB_Webley_mk6"]];
+
+private _manTemplate = {
+    ["helmets"] call _fnc_setHelmet;
+    ["uniforms"] call _fnc_setUniform;
+    ["facewear"] call _fnc_setFacewear;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+
+    ["maps"] call _fnc_addMap;
+};
+private _workerTemplate = {
+    ["workerHelmets"] call _fnc_setHelmet;
+    ["workerUniforms"] call _fnc_setUniform;
+    ["facewear"] call _fnc_setFacewear;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+};
+private _pressTemplate = {
+    ["pressHelmets"] call _fnc_setHelmet;
+    ["pressUniforms"] call _fnc_setUniform;
+    ["facewear"] call _fnc_setFacewear;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+
+    ["maps"] call _fnc_addMap;
+};
+private _vipTemplate = {
+    ["vipUniforms"] call _fnc_setUniform;
+
+    ["items_medical_standard"] call _fnc_addItemSet;
+
+    ["maps"] call _fnc_addMap;
+    ["watches"] call _fnc_addWatch;
+    ["compasses"] call _fnc_addCompass;
+
+    ["sidearms"] call _fnc_setHandgun;
+    ["handgun", 2] call _fnc_addMagazines;
+};
+private _prefix = "militia";
+private _unitTypes = [
+    ["VIP", _vipTemplate],
+    ["Press", _pressTemplate],
+    ["Worker", _workerTemplate],
+    ["Man", _manTemplate]
+];
+
+[_prefix, _unitTypes, _loadoutData] call _fnc_generateAndSaveUnitsToTemplate;
