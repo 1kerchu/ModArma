@@ -19,12 +19,20 @@
 ["flagTexture", "\GCE\addons\gce_main\data\flags\gce_republica_co.paa"] call _fnc_saveToTemplate;
 ["flagMarkerType", "GCE_flag_Republica"] call _fnc_saveToTemplate;
 
+// Vehículos de Northern Fronts: si está cargado el PBO gce_vehiculos se usan sus copias
+// (mismo vehículo, con nombre en español y foto en el menú de compra).
+private _v = {
+    params ["_gce", "_orig"];
+    if (isClass (configFile >> "CfgVehicles" >> _gce)) then { _gce } else { _orig }
+};
+
 // --- Tienda de vehículos ---
-["vehiclesBasic", ["NORTH_SOV_R75"]] call _fnc_saveToTemplate;                       // "quad" -> moto con sidecar
+["vehiclesBasic", [["GCE_R75","NORTH_SOV_R75"] call _v]] call _fnc_saveToTemplate;    // "quad" -> moto con sidecar
 ["vehiclesLightUnarmed", ["LIB_GazM1","LIB_GazM1_dirty"]] call _fnc_saveToTemplate;  // "off-road" -> coche de los años 30
 ["vehiclesLightArmed", ["LIB_Kfz1_MG42_sernyt"]] call _fnc_saveToTemplate;           // coche con ametralladora
-["vehiclesTruck", ["NORTH_FIN_FordV8","LIB_Zis5v"]] call _fnc_saveToTemplate;        // camión de tropas
-["vehiclesAT", ["NORTH_SOV_BA6","NORTH_FIN_BA10"]] call _fnc_saveToTemplate;         // blindados soviéticos BA-6/BA-10 (enviados a España)
+// Camiones: el Opel Blitz es el más rápido (85 km/h, 13 plazas); Ford V8 (75, 14) y ZIS-5 (60, 14) más baratos
+["vehiclesTruck", ["LIB_OpelBlitz_Tent_Y_Camo", ["GCE_Ford_V8","NORTH_FIN_FordV8"] call _v, "LIB_Zis5v"]] call _fnc_saveToTemplate;
+["vehiclesAT", [["GCE_BA6","NORTH_SOV_BA6"] call _v, ["GCE_BA10","NORTH_FIN_BA10"] call _v]] call _fnc_saveToTemplate;   // blindados soviéticos BA-6/BA-10
 ["vehiclesAA", ["LIB_Zis5v_61K"]] call _fnc_saveToTemplate;
 
 ["vehiclesBoat", ["LIB_LCVP"]] call _fnc_saveToTemplate;
@@ -37,16 +45,16 @@ if (isClass (configFile >> "CfgPatches" >> "sab_sw_i16")) then {
 
 // --- Vehículos civiles que se pueden robar/comprar ---
 ["vehiclesCivCar", ["LIB_GazM1","LIB_GazM1_dirty"]] call _fnc_saveToTemplate;
-["vehiclesCivTruck", ["LIB_Zis5v","NORTH_FIN_FordV8"]] call _fnc_saveToTemplate;
+["vehiclesCivTruck", ["LIB_Zis5v", ["GCE_Ford_V8","NORTH_FIN_FordV8"] call _v]] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", []] call _fnc_saveToTemplate;
-["vehiclesCivBoat", ["NORTH_FIN_Syoksyvene"]] call _fnc_saveToTemplate;
+["vehiclesCivBoat", [["GCE_Lancha","NORTH_FIN_Syoksyvene"] call _v]] call _fnc_saveToTemplate;
 ["vehiclesCivSupply", ["LIB_Zis5v"]] call _fnc_saveToTemplate;
 
 // --- Estáticas ---
-["staticMGs", ["NORTH_FIN_Maxim"]] call _fnc_saveToTemplate;                          // Maxim
-["staticAT", ["NORTH_FIN_45PSTK37"]] call _fnc_saveToTemplate;                        // cañón soviético de 45 mm
-["staticAA", ["NORTH_SOV_Maxim_Quad"]] call _fnc_saveToTemplate;
-["staticMortars", ["NORTH_SOV_50rm38"]] call _fnc_saveToTemplate;
+["staticMGs", [["GCE_Maxim","NORTH_FIN_Maxim"] call _v]] call _fnc_saveToTemplate;                          // Maxim
+["staticAT", [["GCE_Canon_45","NORTH_FIN_45PSTK37"] call _v]] call _fnc_saveToTemplate;                        // cañón soviético de 45 mm
+["staticAA", [["GCE_Maxim_Quad","NORTH_SOV_Maxim_Quad"] call _v]] call _fnc_saveToTemplate;
+["staticMortars", [["GCE_Mortero_50","NORTH_SOV_50rm38"] call _v]] call _fnc_saveToTemplate;
 ["staticMortarMagHE", "NORTH_10Shell_50mm_MortarHEshell_50krh38"] call _fnc_saveToTemplate;
 ["staticMortarMagSmoke", "NORTH_10Shell_50mm_MortarSmokeShell_50krh38"] call _fnc_saveToTemplate;
 

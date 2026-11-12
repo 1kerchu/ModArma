@@ -1,11 +1,22 @@
 // Precios de la tienda rebelde (dinero de la facción). Cámbialos a tu gusto.
 ["attributesVehicles", [
+    // copias con foto (PBO gce_vehiculos), mismos precios
+    ["GCE_R75", ["rebCost", 50]],
+    ["GCE_Ford_V8", ["rebCost", 400]],
+    ["GCE_BA6", ["rebCost", 2500]],
+    ["GCE_BA10", ["rebCost", 3000]],
+    ["GCE_Lancha", ["rebCost", 300]],
+    ["GCE_Maxim", ["rebCost", 300]],
+    ["GCE_Canon_45", ["rebCost", 3000]],
+    ["GCE_Maxim_Quad", ["rebCost", 800]],
+    ["GCE_Mortero_50", ["rebCost", 2000]],
     ["NORTH_SOV_R75", ["rebCost", 50]],
     ["LIB_GazM1", ["rebCost", 150]],
     ["LIB_GazM1_dirty", ["rebCost", 150]],
     ["LIB_Kfz1_MG42_sernyt", ["rebCost", 300]],
     ["NORTH_FIN_FordV8", ["rebCost", 400]],
-    ["LIB_Zis5v", ["rebCost", 500]],
+    ["LIB_Zis5v", ["rebCost", 300]],
+    ["LIB_OpelBlitz_Tent_Y_Camo", ["rebCost", 600]],
     ["NORTH_SOV_BA6", ["rebCost", 2500]],
     ["NORTH_FIN_BA10", ["rebCost", 3000]],
     ["LIB_Zis5v_61K", ["rebCost", 900]],
