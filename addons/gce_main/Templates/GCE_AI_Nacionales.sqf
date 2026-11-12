@@ -125,8 +125,8 @@ if (isClass (configFile >> "CfgPatches" >> "sab_sw_i16")) then {
 ///  Identities   ///
 /////////////////////
 
-// Arma no tiene voces en español: se usan las griegas de Altis
-["voices", ["Male01GRE","Male02GRE","Male03GRE","Male04GRE","Male05GRE","Male06GRE"]] call _fnc_saveToTemplate;
+// Arma no tiene voces en español: se usan las inglesas (más avisos por radio que las griegas)
+["voices", ["Male01ENG","Male02ENG","Male03ENG","Male04ENG","Male05ENG","Male06ENG","Male07ENG","Male08ENG","Male09ENG","Male10ENG","Male11ENG","Male12ENG"]] call _fnc_saveToTemplate;
 ["faces", ["GreekHead_A3_01","GreekHead_A3_02","GreekHead_A3_03","GreekHead_A3_04","GreekHead_A3_05","GreekHead_A3_06","GreekHead_A3_07","GreekHead_A3_08","GreekHead_A3_09"]] call _fnc_saveToTemplate;
 
 
