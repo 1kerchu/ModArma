@@ -12,10 +12,10 @@
 ["name", "Ejército Nacional"] call _fnc_saveToTemplate;
 ["spawnMarkerName", "Refuerzos Nacionales"] call _fnc_saveToTemplate;
 
-// TODO: bandera propia (rojigualda) -> crear .paa y CfgMarkers. De momento se usa una genérica.
-["flag", "Flag_Red_F"] call _fnc_saveToTemplate;
-["flagTexture", "\A3\Data_F\Flags\Flag_red_CO.paa"] call _fnc_saveToTemplate;
-["flagMarkerType", "flag_Altis"] call _fnc_saveToTemplate;
+// Rojigualda (tools/make_flags.py)
+["flag", "Flag_White_F"] call _fnc_saveToTemplate;
+["flagTexture", "\GCE\addons\gce_main\data\flags\gce_nacional_co.paa"] call _fnc_saveToTemplate;
+["flagMarkerType", "GCE_flag_Nacional"] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Vehicles       //

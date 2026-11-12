@@ -26,6 +26,29 @@ class CfgPatches
     };
 };
 
+class CfgMarkers
+{
+    class flag_NATO;
+    class GCE_flag_Nacional : flag_NATO
+    {
+        name = "España (bando nacional)";
+        icon = "\GCE\addons\gce_main\data\markers\gce_nacional_co.paa";
+        texture = "\GCE\addons\gce_main\data\markers\gce_nacional_co.paa";
+    };
+    class GCE_flag_Republica : flag_NATO
+    {
+        name = "República Española";
+        icon = "\GCE\addons\gce_main\data\markers\gce_republica_co.paa";
+        texture = "\GCE\addons\gce_main\data\markers\gce_republica_co.paa";
+    };
+    class GCE_flag_CNT : flag_NATO
+    {
+        name = "CNT-FAI";
+        icon = "\GCE\addons\gce_main\data\markers\gce_cnt_co.paa";
+        texture = "\GCE\addons\gce_main\data\markers\gce_cnt_co.paa";
+    };
+};
+
 class A3A
 {
     class Templates
@@ -44,7 +67,7 @@ class A3A
         {
             side = "Occ";
             name = "GCE Ejército Nacional";
-            flagTexture = "\A3\Data_F\Flags\Flag_red_CO.paa";
+            flagTexture = "\GCE\addons\gce_main\data\flags\gce_nacional_co.paa";
             file = "GCE_AI_Nacionales";
             description = "Bando sublevado (1936-1939): Ejército de África, Regulares, Falange y Requetés.";
         };
@@ -62,16 +85,25 @@ class A3A
         {
             side = "Reb";
             name = "GCE República";
-            flagTexture = "\A3\Data_F\Flags\Flag_red_CO.paa";
+            flagTexture = "\GCE\addons\gce_main\data\flags\gce_republica_co.paa";
             file = "GCE_Reb_Republica";
-            description = "Milicias obreras, Ejército Popular y Brigadas Internacionales.";
+            description = "Ejército Popular de la República y Brigadas Internacionales.";
+        };
+
+        class GCE_CNT : GCE_Base
+        {
+            side = "Reb";
+            name = "GCE Milicias CNT-FAI";
+            flagTexture = "\GCE\addons\gce_main\data\flags\gce_cnt_co.paa";
+            file = "GCE_Reb_CNT";
+            description = "Milicias anarquistas (columnas confederales). Mismo equipo que la República, otra bandera.";
         };
 
         class GCE_Civiles : GCE_Base
         {
             side = "Civ";
             name = "GCE Civiles 1936";
-            flagTexture = "\A3\Data_F\Flags\Flag_red_CO.paa";
+            flagTexture = "\GCE\addons\gce_main\data\flags\gce_republica_co.paa";
             file = "GCE_CIV";
             description = "Población civil española de los años 30.";
         };

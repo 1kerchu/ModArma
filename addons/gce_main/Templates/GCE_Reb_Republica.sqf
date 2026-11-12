@@ -14,10 +14,10 @@
 
 ["name", "Ejército Popular de la República"] call _fnc_saveToTemplate;
 
-// TODO: bandera tricolor republicana (.paa propia). De momento una genérica.
+// Tricolor republicana (tools/make_flags.py)
 ["flag", "Flag_FIA_F"] call _fnc_saveToTemplate;
-["flagTexture", "\A3\Data_F\Flags\Flag_red_CO.paa"] call _fnc_saveToTemplate;
-["flagMarkerType", "flag_FIA"] call _fnc_saveToTemplate;
+["flagTexture", "\GCE\addons\gce_main\data\flags\gce_republica_co.paa"] call _fnc_saveToTemplate;
+["flagMarkerType", "GCE_flag_Republica"] call _fnc_saveToTemplate;
 
 // --- Tienda de vehículos ---
 ["vehiclesBasic", ["NORTH_SOV_R75"]] call _fnc_saveToTemplate;                       // "quad" -> moto con sidecar

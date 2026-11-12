@@ -7,7 +7,8 @@ Española (1936-1939). Todo es **gratuito**.
 |---|---|---|
 | Ocupantes | Ejército Nacional (Regulares, Falange, Requetés) | `GCE_AI_Nacionales.sqf` |
 | Invasores | Legión Cóndor + CTV | `GCE_AI_Condor.sqf` |
-| Rebeldes (jugadores) | República (milicias, Ejército Popular, Brigadas Internacionales) | `GCE_Reb_Republica.sqf` |
+| Rebeldes (jugadores) | República (Ejército Popular, Brigadas Internacionales) | `GCE_Reb_Republica.sqf` |
+| Rebeldes (alternativa) | Milicias CNT-FAI (mismo equipo, bandera rojinegra) | `GCE_Reb_CNT.sqf` |
 | Civiles | Población española de los años 30 | `GCE_CIV.sqf` |
 
 Mapa recomendado: **Altis** (los bandos GCE salen arriba de la lista en ese mapa).
@@ -48,6 +49,15 @@ addons/gce_main/
 - Para encontrar classnames: en el editor de Arma, clic derecho en un objeto → *Log → Copy classname*,
   o en el arsenal virtual con la consola de depuración.
 
+## Banderas
+Se generan con `python3 tools/make_flags.py` (necesita Pillow) y salen en:
+- `addons/gce_main/data/flags/*_co.paa`: bandera del mástil y de la pantalla de selección.
+- `addons/gce_main/data/markers/*_co.paa`: icono del mapa.
+- `art/flags/*.png`: copias en PNG por si quieres retocarlas. Después conviértelas con ImageToPAA
+  (Arma 3 Tools) usando el mismo nombre.
+
+Para añadir otra bandera, crea una función de dibujo en `tools/make_flags.py` y añádela a `BANDERAS`.
+
 ## Compilar y publicar
 1. Instala **Arma 3 Tools** (Steam → Biblioteca → Herramientas).
 2. Con **Addon Builder**: origen `addons/gce_main`, destino `@GCE/addons`,
@@ -58,7 +68,7 @@ addons/gce_main/
 5. Publica con **Arma 3 Publisher** marcando las dependencias del Workshop.
 
 ## Pendiente (siguientes fases)
-- [ ] Banderas propias (rojigualda y tricolor republicana) en `.paa` + marcadores de mapa.
+- [x] Banderas propias (rojigualda, tricolor republicana, CNT-FAI) + marcadores de mapa.
 - [ ] Retexturas de uniformes: monos de miliciano, boina roja de requeté, gorro isabelino.
 - [ ] Material italiano del CTV (no hay en IFA3/Northern Fronts; buscar otro mod gratis o retexturas).
 - [ ] Probar en partida y ajustar classnames que den error en el RPT.
