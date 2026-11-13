@@ -45,6 +45,7 @@ addons/gce_misiones/             PBO 4: misiones nuevas y jefe de escuadra (sirv
   functions/jefe/                jefe de escuadra
 addons/gce_vehiculos/            PBO 5 (necesita Northern Fronts): copias de sus vehículos con foto
   data/previews/*.jpg            fotos del menú de compra (tools/make_previews.py)
+addons/gce_milicianas/           PBO 7 (OPCIONAL, necesita el mod "ZEPHIK Females V2"): milicianas
 addons/gce_mapa/                 PBO 6: devuelve los colores normales del mapa (IFA3 pone los árboles en verde fosforito)
 addons/gce_gorros/               PBO 3 (necesita Northern Fronts): gorrillos
   config.cpp                     GCE_H_Gorrillo_Negro / _Rojo (retextura de la pilotka)
@@ -171,6 +172,13 @@ la mitad. Se guardan en la partida (máx. 200).
 Usando el sistema oficial de Antistasi para mods externos se guardan: las fortificaciones, los
 tiempos de espera de las misiones y el del apoyo aéreo.
 
+## Milicianas (opcional)
+Con el mod gratuito **ZEPHIK Females V2** cargado y el PBO `gce_milicianas`, una parte de los
+reclutas rebeldes son **milicianas**: mono azul, mahón o negro (CNT-FAI) o caqui y mahón
+(República), con cara femenina, nombre de mujer y voz más aguda (Arma no tiene voces femeninas).
+Las milicias de la República enemiga (modo anarquista) también. Los uniformes están en el arsenal.
+Sin ese mod no cambia nada.
+
 ## Morral de sanitario
 Mochila del equipo inicial (ilimitada) con sitio para el Medikit (en el PBO `gce_uniformes`).
 Los **médicos** rebeldes que recluta la IA la llevan puesta automáticamente, con su material
@@ -195,6 +203,7 @@ Hay **seis PBO**. Empaqueta cada carpeta de `addons/` con su prefijo y ponlos to
 | `gce_misiones` | `GCE\addons\gce_misiones` |
 | `gce_vehiculos` | `GCE\addons\gce_vehiculos` |
 | `gce_mapa` | `GCE\addons\gce_mapa` |
+| `gce_milicianas` (opcional) | `GCE\addons\gce_milicianas` |
 
 1. Instala **Arma 3 Tools** (Steam → Biblioteca → Herramientas).
 2. Con **Addon Builder**: origen `addons/gce_main`, destino `@GCE/addons`,

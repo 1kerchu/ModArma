@@ -40,17 +40,27 @@ private _clases = [
     "GCE_Lancha",
     "GCE_Maxim",
     "GCE_Maxim_Quad",
+    "GCE_Miliciana_Azul",
+    "GCE_Miliciana_Caqui",
+    "GCE_Miliciana_Mahon",
+    "GCE_Miliciana_Negro",
     "GCE_Miliciano_Mono_Azul",
     "GCE_Miliciano_Mono_Caqui",
     "GCE_Miliciano_Mono_Mahon",
     "GCE_Miliciano_Mono_Negro",
     "GCE_Mortero_50",
     "GCE_R75",
+    "GCE_U_Miliciana",
+    "GCE_U_Miliciana_Azul",
+    "GCE_U_Miliciana_Caqui",
+    "GCE_U_Miliciana_Mahon",
+    "GCE_U_Miliciana_Negro",
     "GCE_U_Mono_Azul",
     "GCE_U_Mono_Caqui",
     "GCE_U_Mono_Mahon",
     "GCE_U_Mono_Negro",
     "GCE_main",
+    "GCE_uniformes",
     "G_LIB_Dienst_Brille",
     "G_LIB_Dienst_Brille2",
     "G_LIB_Dust_Goggles",
@@ -458,6 +468,10 @@ private _clases = [
     "V_NORTH_SOV_Belt_SVT",
     "V_NORTH_SOV_Belt_SVT_2",
     "V_NORTH_SOV_SN42",
+    "ZEPHIK_BLU_WOODLAND_1_U",
+    "ZEPHIK_Civilian_Black_Tshirt_Jeans_U",
+    "ZEPHIK_Female_Civ_1",
+    "ZEPHIK_Female_Civ_13",
     "sab_fl_bf109e",
     "sab_fl_ju52",
     "sab_fl_ju86",
@@ -505,13 +519,18 @@ private _rutas = [
     "\GCE\addons\gce_vehiculos\data\previews\gce_maxim_quad.jpg",
     "\GCE\addons\gce_vehiculos\data\previews\gce_mortero_50.jpg",
     "\GCE\addons\gce_vehiculos\data\previews\gce_r75.jpg",
-    "ww2\core_t\if_decals_t\german\flag_ger_co.paa"
+    "ww2\core_t\if_decals_t\german\flag_ger_co.paa",
+    "zephik_uniforms\tshirt_jeans_1\data\shoes1_co.paa"
 ];
 private _opcionales = [
     "sab_",
     "FA_",
     "TFAR_",
-    "ACE_"
+    "ACE_",
+    "ZEPHIK_",
+    "GCE_U_Miliciana",
+    "GCE_Miliciana",
+    "GCE_milicianas"
 ];
 
 private _faltan = [];
@@ -536,6 +555,7 @@ private _faltanRutas = _rutas select { !fileExists _x };
 // PBO del mod cargados
 private _pbos = ["GCE_main", "GCE_uniformes", "GCE_gorros", "GCE_misiones", "GCE_vehiculos", "GCE_mapa"];
 private _pbosNo = _pbos select { !isClass (configFile >> "CfgPatches" >> _x) };
+private _milicianas = if (isClass (configFile >> "CfgPatches" >> "GCE_milicianas")) then { "Milicianas: activas (ZEPHIK Females cargado)" } else { "Milicianas: no (opcional, necesita ZEPHIK Females V2)" };
 
 // bases retexturizadas: ¿admiten cambiar la textura?
 private _sel = [
@@ -549,6 +569,7 @@ private _sel = [
 
 private _txt = format ["GCE - COMPROBACIÓN<br/>Clases revisadas: %1<br/>Archivos revisados: %2<br/><br/>", count _clases + count _marcadores, count _rutas];
 _txt = _txt + (if (_pbosNo isEqualTo []) then { "PBO: los 6 cargados<br/>" } else { format ["<t color='#FF6060'>PBO NO cargados: %1</t><br/>", _pbosNo] });
+_txt = _txt + _milicianas + "<br/>";
 _txt = _txt + (if (_faltan isEqualTo []) then { "<t color='#60FF60'>No falta ninguna clase.</t><br/>" } else { format ["<t color='#FF6060'>FALTAN %1 clases:</t><br/>%2<br/>", count _faltan, _faltan joinString ", "] });
 _txt = _txt + (if (_faltanRutas isEqualTo []) then { "<t color='#60FF60'>No falta ningún archivo.</t><br/>" } else { format ["<t color='#FF6060'>FALTAN %1 archivos:</t><br/>%2<br/>", count _faltanRutas, _faltanRutas joinString "<br/>"] });
 if (_faltanOpc isNotEqualTo []) then { _txt = _txt + format ["<br/>Mods opcionales no cargados (no pasa nada): %1<br/>", count _faltanOpc] };

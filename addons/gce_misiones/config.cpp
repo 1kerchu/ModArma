@@ -49,6 +49,7 @@ class CfgFunctions
             class endMission {};
             class morralMedico {};
             class darRadio {};
+            class miliciana {};
             class datosGuardar {};
             class datosCargar {};
             class waitArrival {};

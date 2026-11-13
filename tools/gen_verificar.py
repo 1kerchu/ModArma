@@ -13,14 +13,14 @@ OUT = os.path.join(ROOT, "addons", "gce_misiones", "functions", "fn_verificar.sq
 
 PREFIJOS = ("LIB_", "NORTH_", "GCE_", "U_", "H_", "V_", "B_", "G_", "Land_", "Flag_", "Box_",
             "Male0", "GreekHead", "sab_", "FA_", "Bo_", "R_", "test_", "A3U_", "C_man", "flag_", "a3a_flag")
-OPCIONALES = ("sab_", "FA_", "TFAR_", "ACE_")       # mods opcionales: si faltan no es un error
+OPCIONALES = ("sab_", "FA_", "TFAR_", "ACE_", "ZEPHIK_", "GCE_U_Miliciana", "GCE_Miliciana", "GCE_milicianas")       # mods opcionales: si faltan no es un error
 IGNORAR = {"GCE_misionActiva", "GCE_menuMisiones", "GCE_acciones", "GCE_esJefe", "GCE_blanco",
            "GCE_sigue", "GCE_aSalvo", "GCE_libre", "GCE_civRefugio", "GCE_refugioActivo",
            "GCE_oroDistanciaMax", "GCE_esperas", "GCE_contadorTareas", "GCE_npCentro",
            "GCE_npCivMuertos", "GCE_carga", "GCE_brigadas", "GCE_brigadista", "GCE_eventoActivo",
            "GCE_eventosIntervalo", "GCE_eventosActivos", "GCE_desertor", "GCE_fort", "GCE_fortPuedo",
            "GCE_fortFantasma", "GCE_fortificaciones", "GCE_requisada", "GCE_aereoHasta", "GCE_datos",
-           "GCE_jefeLatido", "GCE_jefeEnemigos", "GCE_pueblosActivos", "GCE_cuartelDecorado",
+           "GCE_jefeLatido", "GCE_jefeEnemigos", "GCE_miliciana", "GCE_carasFemeninas", "GCE_pueblosActivos", "GCE_cuartelDecorado",
            "GCE_fortAcciones"}
 
 clases, rutas = set(), set()
@@ -94,6 +94,7 @@ private _faltanRutas = _rutas select {{ !fileExists _x }};
 // PBO del mod cargados
 private _pbos = ["GCE_main", "GCE_uniformes", "GCE_gorros", "GCE_misiones", "GCE_vehiculos", "GCE_mapa"];
 private _pbosNo = _pbos select {{ !isClass (configFile >> "CfgPatches" >> _x) }};
+private _milicianas = if (isClass (configFile >> "CfgPatches" >> "GCE_milicianas")) then {{ "Milicianas: activas (ZEPHIK Females cargado)" }} else {{ "Milicianas: no (opcional, necesita ZEPHIK Females V2)" }};
 
 // bases retexturizadas: ¿admiten cambiar la textura?
 private _sel = [
@@ -107,6 +108,7 @@ private _sel = [
 
 private _txt = format ["GCE - COMPROBACIÓN<br/>Clases revisadas: %1<br/>Archivos revisados: %2<br/><br/>", count _clases + count _marcadores, count _rutas];
 _txt = _txt + (if (_pbosNo isEqualTo []) then {{ "PBO: los 6 cargados<br/>" }} else {{ format ["<t color='#FF6060'>PBO NO cargados: %1</t><br/>", _pbosNo] }});
+_txt = _txt + _milicianas + "<br/>";
 _txt = _txt + (if (_faltan isEqualTo []) then {{ "<t color='#60FF60'>No falta ninguna clase.</t><br/>" }} else {{ format ["<t color='#FF6060'>FALTAN %1 clases:</t><br/>%2<br/>", count _faltan, _faltan joinString ", "] }});
 _txt = _txt + (if (_faltanRutas isEqualTo []) then {{ "<t color='#60FF60'>No falta ningún archivo.</t><br/>" }} else {{ format ["<t color='#FF6060'>FALTAN %1 archivos:</t><br/>%2<br/>", count _faltanRutas, _faltanRutas joinString "<br/>"] }});
 if (_faltanOpc isNotEqualTo []) then {{ _txt = _txt + format ["<br/>Mods opcionales no cargados (no pasa nada): %1<br/>", count _faltanOpc] }};

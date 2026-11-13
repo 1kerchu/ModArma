@@ -15,7 +15,12 @@ if (isServer) then {
         };
         // todos los soldados rebeldes con radio (para oír y dar avisos por radio)
         [_u] remoteExec ["GCE_fnc_darRadio", _u];
+        // milicianas: cara femenina, nombre y voz
+        [_u] call GCE_fnc_miliciana;
     }] call CBA_fnc_addEventHandler;
+
+    // Milicianas enemigas (p. ej. milicias de la República en el modo anarquista)
+    ["A3A_event_serverInitAiUnit", { [_this select 0] call GCE_fnc_miliciana }] call CBA_fnc_addEventHandler;
 
     // Guardado en la partida de Antistasi (eventos oficiales para mods externos)
     ["A3A_event_serverGameSave", { [_this select 0] call GCE_fnc_datosGuardar }] call CBA_fnc_addEventHandler;

@@ -155,6 +155,17 @@ if (isNil "_gceCNT") then {
     _rebHeadgear append (_gorros + _gorros);
 };
 
+// Milicianas (PBO gce_milicianas + mod ZEPHIK Females V2): solo si están cargados.
+// Los soldados propios del bando (Petros, etc.) siguen usando los uniformes de hombre.
+private _rebUniformesHombre = +_rebUniforms;
+private _milicianas = ["GCE_U_Miliciana_Azul", "GCE_U_Miliciana_Mahon", "GCE_U_Miliciana_Negro", "GCE_U_Miliciana_Caqui"]
+    select { isClass (configFile >> "CfgWeapons" >> _x) };
+if (isNil "_gceCNT") then {
+    _rebUniforms append (_milicianas select { _x in ["GCE_U_Miliciana_Caqui", "GCE_U_Miliciana_Mahon"] });
+} else {
+    _rebUniforms append (_milicianas select { _x in ["GCE_U_Miliciana_Azul", "GCE_U_Miliciana_Mahon", "GCE_U_Miliciana_Negro"] });
+};
+
 private _dlcUniforms = [];
 
 ["uniforms", _rebUniforms + _dlcUniforms] call _fnc_saveToTemplate;
@@ -179,7 +190,7 @@ _loadoutData set ["compasses", ["LIB_GER_ItemCompass_deg"]];
 _loadoutData set ["binoculars", ["LIB_Binocular_SU"]];
 _loadoutData set ["radios", ["ItemRadio"]];
 
-_loadoutData set ["uniforms", _rebUniforms];
+_loadoutData set ["uniforms", _rebUniformesHombre];
 _loadoutData set ["helmets", _rebHeadgear];
 
 _loadoutData set ["glasses", ["G_LIB_Dienst_Brille", "G_LIB_Dienst_Brille2"]];
