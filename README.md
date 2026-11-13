@@ -20,7 +20,8 @@ Española (1936-1939). Todo es **gratuito**.
 
 Puedes mezclarlos como quieras en la pestaña de facciones de Antistasi.
 
-Mapa recomendado: **Altis** (los bandos GCE salen arriba de la lista en ese mapa).
+Mapa recomendado: **Malden** (12 × 12 km, gratis con el Arma 3 base, paisaje mediterráneo y pueblos
+cercanos). También **Altis**. En los dos, los bandos GCE salen preseleccionados.
 
 ## Mods necesarios (Steam Workshop, gratis)
 1. CBA_A3
@@ -171,6 +172,12 @@ la mitad. Se guardan en la partida (máx. 200).
 ## Guardado
 Usando el sistema oficial de Antistasi para mods externos se guardan: las fortificaciones, los
 tiempos de espera de las misiones y el del apoyo aéreo.
+
+## Transporte de enlace
+Junto a Petros (40 m) o en el centro de un pueblo **nuestro** (80 m), a pie: **"Transporte de enlace"**.
+Eliges otro pueblo nuestro o el cuartel (los 9 más cercanos) y un camión de las milicias os lleva:
+fundido a negro y llegada. Vienen contigo los soldados de tu grupo que estén a pie a menos de 50 m.
+Precio: 50 + 15 por km. No funciona con enemigos a menos de 300 m del origen ni del destino.
 
 ## Milicianas (opcional)
 Con el mod gratuito **ZEPHIK Females V2** cargado y el PBO `gce_milicianas`, una parte de los

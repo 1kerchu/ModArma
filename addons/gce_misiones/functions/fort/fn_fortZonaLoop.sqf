@@ -1,7 +1,8 @@
 /*
     GCE_fnc_fortZonaLoop  (cliente, spawn)
     Cada 3 s comprueba si el jugador está en zona propia (a menos de 300 m del cuartel o de un
-    lugar que controlamos) para mostrar la acción de fortificar.
+    lugar que controlamos) para mostrar la acción de fortificar, y si puede usar el transporte
+    de enlace (junto a Petros o en el centro de un pueblo nuestro).
 */
 while { true } do {
     private _ok = false;
@@ -11,5 +12,14 @@ while { true } do {
             || {(markersX findIf { (sidesX getVariable [_x, sideUnknown]) == teamPlayer && {(getMarkerPos _x) distance2D _p < 300} }) != -1};
     };
     GCE_fortPuedo = _ok;
+
+    // Transporte de enlace: junto a Petros (40 m) o en el centro de un pueblo nuestro (80 m), a pie
+    private _enlace = false;
+    if (!isNil "citiesX" && {side group player == teamPlayer} && {vehicle player == player}) then {
+        private _p = getPos player;
+        _enlace = (!isNil "petros" && {!isNull petros} && {petros distance2D _p < 40})
+            || {(citiesX findIf { (sidesX getVariable [_x, sideUnknown]) == teamPlayer && {(getMarkerPos _x) distance2D _p < 80} }) != -1};
+    };
+    GCE_enlacePuedo = _enlace;
     sleep 3;
 };

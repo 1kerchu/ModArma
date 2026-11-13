@@ -129,6 +129,14 @@ class CfgFunctions
             class fortCrearObjeto {};
             class fortQuitar {};
         };
+        class enlace
+        {
+            file = "\GCE\addons\gce_misiones\functions\enlace";
+            class enlaceDestinos {};
+            class enlaceMenu {};
+            class enlaceViajar {};
+            class enlaceLlegar {};
+        };
         class jefe
         {
             file = "\GCE\addons\gce_misiones\functions\jefe";

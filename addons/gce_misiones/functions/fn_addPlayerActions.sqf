@@ -53,6 +53,12 @@ _ids pushBack (player addAction [
     nil, 0.3, false, true, "",
     "!isNull cursorObject && {cursorObject getVariable ['GCE_fort', false]} && {player distance cursorObject < 6}"
 ]);
+_ids pushBack (player addAction [
+    "<t color='#E8B04A'>Transporte de enlace</t>",
+    { [] call GCE_fnc_enlaceMenu },
+    nil, 1.2, false, true, "",
+    "missionNamespace getVariable ['GCE_enlacePuedo', false]"
+]);
 player setVariable ["GCE_acciones", _ids];
 
 // Reactivar jefes de escuadra que se hayan quedado sin proceso (p. ej. al reaparecer)

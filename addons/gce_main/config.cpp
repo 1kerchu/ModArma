@@ -59,7 +59,7 @@ class A3A
             basepath = "\GCE\addons\gce_main\Templates";
             logo = "";
             priority = 30;            // aparecen los primeros en la lista
-            maps[] = {"altis"};      // y aún más arriba en Altis
+            maps[] = {"altis", "malden"};   // y aún más arriba en Altis y Malden
             equipFlags[] = {"lowTech"};
         };
 
