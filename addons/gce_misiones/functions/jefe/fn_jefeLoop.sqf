@@ -8,22 +8,15 @@
            - quien lleva antitanque  -> el vehículo enemigo más cercano
            - ametralladoras          -> el enemigo con más compañeros alrededor (grupos)
            - el resto                -> el enemigo más cercano con menos de 2 tiradores asignados
-      3. da las órdenes por radio cuando cambia el reparto, y avisa de los vehículos nuevos.
+      3. da las órdenes por radio CON VOZ (las del menú de mando del juego: "3, 4, target that
+         soldier, 200 meters, front" / "fire"). Las pronuncia el líder del grupo, porque Arma solo
+         deja dar órdenes con voz al líder. Los avisos de "enemy soldier, 200 meters" los dan los
+         propios soldados al descubrir enemigos.
     Respeta el modo de combate: si mandas "no disparar", solo apuntan. El movimiento lo mandas tú.
     Estado: [] call GCE_fnc_jefeEstado
 */
 params ["_jefe"];
 private _grp = group _jefe;
-private _avisados = [];
-private _ultimaRadio = 0;
-
-private _apellido = { (name _this splitString " ") param [((count (name _this splitString " ")) - 1) max 0, name _this] };
-private _rumbo = {
-    params ["_obj"];
-    private _hora = round ((player getRelDir _obj) / 30) mod 12;
-    if (_hora == 0) then { _hora = 12 };
-    _hora
-};
 
 while { alive _jefe && {_jefe getVariable ["GCE_esJefe", false]} && {group _jefe == _grp} } do {
     _jefe setVariable ["GCE_jefeLatido", time];
@@ -84,43 +77,28 @@ while { alive _jefe && {_jefe getVariable ["GCE_esJefe", false]} && {group _jefe
                     private _k = hashValue _blanco;
                     _cuenta set [_k, (_cuenta getOrDefault [_k, 0]) + 1];
                     if (_blanco != _anterior) then {
-                        _u setVariable ["GCE_blanco", _blanco];
-                        _u doTarget _blanco;
-                        if (_disparar) then { _u doFire _blanco };
-                        // apuntar la orden para la radio
-                        private _o = _ordenes getOrDefault [_k, [_blanco, [], _tipo]];
-                        (_o select 1) pushBack (_u call _apellido);
+                        // se agrupan los soldados por blanco: una sola orden "3, 4, target that soldier"
+                        private _o = _ordenes getOrDefault [_k, [_blanco, []]];
+                        (_o select 1) pushBack _u;
                         _ordenes set [_k, _o];
                     };
                 };
             } forEach _miembros;
 
-            // Órdenes por radio (como mucho 2 mensajes cada 6 segundos)
-            if (count _ordenes > 0 && {time > _ultimaRadio + 6}) then {
-                _ultimaRadio = time;
-                private _n = 0;
-                {
-                    if (_n < 2) then {
-                        _y params ["_b", "_nombres", "_tipo"];
-                        private _quien = if (count _nombres > 1) then {
-                            ((_nombres select [0, count _nombres - 1]) joinString ", ") + " y " + (_nombres select (count _nombres - 1))
-                        } else { _nombres select 0 };
-                        _jefe groupChat format ["%1: ¡%2 a %3, a las %4, %5 metros!",
-                            _quien, ["apuntad", "fuego"] select _disparar, _tipo, [_b] call _rumbo, round (player distance _b)];
-                        _n = _n + 1;
-                    };
-                } forEach _ordenes;
-            };
-
-            // Aviso de vehículos nuevos
+            // Órdenes por radio CON VOZ, como las del menú de mando del juego:
+            // "3, 4, target that soldier, 200 meters, front" + "fire" si el grupo puede disparar.
+            // Las da el líder del grupo (Arma solo deja dar órdenes con voz al líder).
+            // Como mucho 3 blancos por revisión para no saturar la radio; el resto, en la siguiente.
+            private _n = 0;
             {
-                if !(_x in _avisados) then {
-                    _avisados pushBack _x;
-                    _jefe groupChat format ["¡%1 enemigo a las %2, %3 metros!",
-                        getText (configOf _x >> "displayName"), [_x] call _rumbo, round (player distance _x)];
+                if (_n < 3) then {
+                    _y params ["_b", "_soldados"];
+                    _soldados commandTarget _b;
+                    if (_disparar) then { _soldados commandFire _b };
+                    { _x setVariable ["GCE_blanco", _b] } forEach _soldados;
+                    _n = _n + 1;
                 };
-            } forEach _todosVeh;
-            _avisados = _avisados select { alive _x };
+            } forEach _ordenes;
         };
     };
     sleep 3;

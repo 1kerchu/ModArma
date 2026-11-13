@@ -106,7 +106,9 @@ Mira a un recluta de tu grupo y usa **"Nombrar jefe de escuadra"** (cuesta 100).
 reparte los blancos: antitanques a los vehículos, ametralladoras a los grupos y el resto al enemigo
 más cercano, sin amontonarse. Avisa por radio de los vehículos. **Tú sigues mandando el movimiento**
 y el modo de combate (si mandas no disparar, solo apuntan). Solo un jefe por grupo.
-Da las órdenes por radio ("Pérez y Gómez: ¡fuego al grupo enemigo, a las 2, 180 metros!").
+Da las órdenes por radio **con voz**, como el menú de mando del juego ("3, 4, target that soldier,
+200 meters, front… fire"). Las pronuncia el líder del grupo (tú), porque Arma solo deja dar
+órdenes con voz al líder; quien decide los blancos es el jefe.
 Para ver qué está haciendo: `[] call GCE_fnc_jefeEstado` en la consola.
 
 ## Brigadas Internacionales
