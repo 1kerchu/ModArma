@@ -488,7 +488,6 @@ private _marcadores = [
     "flag_NATO"
 ];
 private _rutas = [
-    ".jpg",
     "\GCE\addons\gce_gorros\data\gorrillo_negro_co.paa",
     "\GCE\addons\gce_gorros\data\gorrillo_rojo_co.paa",
     "\GCE\addons\gce_main\data\flags\gce_cnt_co.paa",

@@ -34,7 +34,9 @@ for f in archivos:
     s = re.sub(r"//[^\n]*", "", s)
     for tok in re.findall(r'"([^"\n]+)"', s):
         if re.search(r"\.(paa|jpg)$", tok, re.I):
-            rutas.add(tok.replace("\\\\", "\\"))
+            # solo rutas completas (con carpetas); trozos como ".jpg" que se pegan en el código no cuentan
+            if "\\" in tok and re.search(r"[\\][^\\]+\.(paa|jpg)$", tok, re.I):
+                rutas.add(tok.replace("\\\\", "\\"))
         elif re.fullmatch(r"[A-Za-z][A-Za-z0-9_]+", tok) and tok.startswith(PREFIJOS) and tok not in IGNORAR \
                 and not tok.startswith(("GCE_fnc_", "GCE_tarea", "GCE_np_", "GCE_poste", "GCE_flag_",
                                         "GCE_AI_", "GCE_Reb_", "GCE_CIV", "GCE_oro", "GCE_polvorin",
