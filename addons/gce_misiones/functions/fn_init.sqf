@@ -17,8 +17,15 @@ if (isServer) then {
         [_u] remoteExec ["GCE_fnc_darRadio", _u];
     }] call CBA_fnc_addEventHandler;
 
+    // Guardado en la partida de Antistasi (eventos oficiales para mods externos)
+    ["A3A_event_serverGameSave", { [_this select 0] call GCE_fnc_datosGuardar }] call CBA_fnc_addEventHandler;
+    ["A3A_event_serverGameLoad", { [_this select 0] call GCE_fnc_datosCargar }] call CBA_fnc_addEventHandler;
+
     [] spawn GCE_fnc_brigadasMonitor;
     [] spawn GCE_fnc_eventosLoop;
+    [] spawn GCE_fnc_voluntariosLoop;
+    [] spawn GCE_fnc_pueblosLoop;
+    [] spawn GCE_fnc_cuartelLoop;
 };
 
 if (!hasInterface) exitWith {};
@@ -27,5 +34,6 @@ if (!hasInterface) exitWith {};
     waitUntil { sleep 2; !isNull player && {!isNil "teamPlayer"} && {!isNil "A3A_faction_reb"} && {!isNil "petros"} };
     [] call GCE_fnc_addPlayerActions;
     [player] call GCE_fnc_darRadio;
+    [] spawn GCE_fnc_fortZonaLoop;
     player addEventHandler ["Respawn", { [] spawn { sleep 1; [] call GCE_fnc_addPlayerActions; [player] call GCE_fnc_darRadio } }];
 };

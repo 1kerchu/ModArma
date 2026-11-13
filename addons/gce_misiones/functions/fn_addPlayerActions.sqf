@@ -29,6 +29,30 @@ _ids pushBack (player addAction [
     nil, 1.35, false, true, "",
     "call GCE_fnc_brigadistaCond"
 ]);
+_ids pushBack (player addAction [
+    "<t color='#4AA3E8'>Pedir apoyo aéreo (600)</t>",
+    { [] spawn GCE_fnc_aereoPedir },
+    nil, 0.5, false, true, "",
+    "call GCE_fnc_aereoCond"
+]);
+_ids pushBack (player addAction [
+    "<t color='#C8102E'>Ayuda soviética (comprar armas)</t>",
+    { [] call GCE_fnc_sovMenu },
+    nil, 1.33, false, true, "",
+    "call GCE_fnc_sovCond"
+]);
+_ids pushBack (player addAction [
+    "<t color='#C8B060'>Fortificaciones de época</t>",
+    { [] call GCE_fnc_fortMenu },
+    nil, 0.4, false, true, "",
+    "missionNamespace getVariable ['GCE_fortPuedo', false] && {isNil 'GCE_fortFantasma'} && {vehicle player == player}"
+]);
+_ids pushBack (player addAction [
+    "Desmontar fortificación (devuelve la mitad)",
+    { [cursorObject, player] remoteExec ["GCE_fnc_fortQuitar", 2] },
+    nil, 0.3, false, true, "",
+    "!isNull cursorObject && {cursorObject getVariable ['GCE_fort', false]} && {player distance cursorObject < 6}"
+]);
 player setVariable ["GCE_acciones", _ids];
 
 // Reactivar jefes de escuadra que se hayan quedado sin proceso (p. ej. al reaparecer)

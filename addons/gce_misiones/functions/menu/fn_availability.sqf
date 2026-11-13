@@ -38,6 +38,11 @@ private _bases = (outposts + milbases + airportsX) select {
 ["telefono", "Cortar la línea telefónica", _bases apply {[_x]},
     format ["no hay bases enemigas a menos de %1 km", _km]] call _anadir;
 
+// 2c. Requisa de armas: pueblo ENEMIGO en rango (cuartel de su policía).
+private _cReq = citiesX select { (_x call _esEnemigo) && {_x call _enRango} };
+["requisa", "Requisa de armas (cuartel enemigo)", _cReq apply {[_x]},
+    format ["no hay pueblos enemigos a menos de %1 km", _km]] call _anadir;
+
 // 3. Colectivizar la finca: recurso o fábrica ENEMIGA cerca. Primero se conquista y luego se
 //    defiende del contraataque mientras se colectiviza.
 private _c3 = (resourcesX + factories) select { (_x call _esEnemigo) && {_x call _enRango} };

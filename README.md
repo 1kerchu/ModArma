@@ -78,6 +78,7 @@ en ese momento salen en gris con el motivo, y no se pueden elegir. Solo una misi
 |---|---|---|
 | ¡No pasarán! | hay un pueblo **nuestro** en rango y una base enemiga que pueda atacarlo | dinero, RR. HH., apoyo |
 | Volar el polvorín | hay una base enemiga en rango: cajas de munición vigiladas; se vuelan con una carga (o destruyendo la caja) | dinero; el enemigo pierde recursos de ataque y defensa |
+| Requisa de armas | hay un pueblo **enemigo** en rango: cuartel de su policía con armería; se limpia la zona y se requisan las armas | las armas de los guardias van al arsenal |
 | Cortar la línea telefónica | hay una base enemiga en rango: 4 postes hacia nuestro lado; 12 min para tirar 3, sin que te vean | dinero (más sin alarma); el enemigo pierde recursos de defensa |
 | Colectivizar la finca | hay una finca, mina o fábrica **enemiga** en rango: primero la tomas (60 min) y luego aguantas 10 min el contraataque | dinero, RR. HH., apoyo |
 | La imprenta | hay una ciudad en rango (a más de 600 m) con apoyo rebelde < 80 % | mucho apoyo |
@@ -138,6 +139,37 @@ Si cambias los templates, regenera la lista con `python3 tools/gen_verificar.py`
 Para oír los avisos del grupo por radio hay que llevar una radio. Aunque sea fuera de época, la
 `ItemRadio` está **ilimitada en el arsenal** desde el principio, el jugador la recibe al entrar o
 reaparecer, y todos los soldados rebeldes la llevan. Con TFAR o ACRE no se toca nada.
+
+## Voluntarios
+Cada 30 minutos, cada pueblo **nuestro** con apoyo rebelde ≥ 75 % manda voluntarios: +1 RR. HH.
+por pueblo (máx. +3). Ajustes: `GCE_voluntariosMinApoyo`, `GCE_voluntariosIntervalo` (servidor).
+
+## Apoyo aéreo
+Con un **aeródromo propio**, el líder de un grupo puede usar **"Pedir apoyo aéreo"** (600): abre el
+mapa, se marca el punto y un avión rebelde (I-16 con Secret Weapons) ataca allí 3 minutos.
+Después hay 15 minutos de espera.
+
+## Ayuda soviética
+Tras la llegada de las Brigadas Internacionales, junto a Petros: **"Ayuda soviética"**. Lotes de
+armas soviéticas (Mosin, SVT-38, PPD-34, DP-27, Fedorov, PTRD, TT-33, granadas) que van al arsenal.
+
+## Fortificaciones de época
+En zona propia (a menos de 300 m del cuartel o de un lugar nuestro): **"Fortificaciones de época"**.
+Sacos terreros, parapetos, nido de ametralladora, barricadas, alambradas y erizos. Se coloca con una
+vista previa delante de ti (Colocar / Girar 45° / Cancelar). **"Desmontar fortificación"** devuelve
+la mitad. Se guardan en la partida (máx. 200).
+
+## Pueblos y cuartel
+- Cada pueblo tiene un **mástil con la bandera** de quien lo controla y una **valla con un cartel**
+  de su bando ("¡No pasarán!", "U.H.P.", "CNT·FAI", "Bando: estado de guerra"…). Cambian al cambiar
+  de manos. Carteles: `tools/make_carteles.py`.
+- Junto a Petros hay un **decorado de época**: mesa de mando con mapa, bandera, sacos, víveres y un
+  cartel. Se mueve con el cuartel.
+- Desactivar: `GCE_pueblosActivos = false`, `GCE_cuartelDecorado = false` (servidor).
+
+## Guardado
+Usando el sistema oficial de Antistasi para mods externos se guardan: las fortificaciones, los
+tiempos de espera de las misiones y el del apoyo aéreo.
 
 ## Morral de sanitario
 Mochila del equipo inicial (ilimitada) con sitio para el Medikit (en el PBO `gce_uniformes`).

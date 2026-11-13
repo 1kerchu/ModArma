@@ -49,6 +49,8 @@ class CfgFunctions
             class endMission {};
             class morralMedico {};
             class darRadio {};
+            class datosGuardar {};
+            class datosCargar {};
             class waitArrival {};
             class rebelCharges {};
             class verificar {};
@@ -67,6 +69,8 @@ class CfgFunctions
             class m_noPasaran {};
             class m_polvorin {};
             class m_telefono {};
+            class m_requisa {};
+            class accionRequisa {};
             class m_finca {};
             class m_imprenta {};
             class m_refugio {};
@@ -90,6 +94,39 @@ class CfgFunctions
             class eventosLoop {};
             class ev_desertores {};
             class ev_huelga {};
+            class voluntariosLoop {};
+        };
+        class apoyo
+        {
+            file = "\GCE\addons\gce_misiones\functions\apoyo";
+            class aereoCond {};
+            class aereoPedir {};
+            class aereoAtaque {};
+        };
+        class ambiente
+        {
+            file = "\GCE\addons\gce_misiones\functions\ambiente";
+            class pueblosLoop {};
+            class cuartelLoop {};
+        };
+        class tienda
+        {
+            file = "\GCE\addons\gce_misiones\functions\tienda";
+            class sovCatalogo {};
+            class sovCond {};
+            class sovMenu {};
+            class sovComprar {};
+        };
+        class fort
+        {
+            file = "\GCE\addons\gce_misiones\functions\fort";
+            class fortCatalogo {};
+            class fortZonaLoop {};
+            class fortMenu {};
+            class fortColocar {};
+            class fortCrear {};
+            class fortCrearObjeto {};
+            class fortQuitar {};
         };
         class jefe
         {

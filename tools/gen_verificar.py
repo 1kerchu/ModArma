@@ -18,7 +18,10 @@ IGNORAR = {"GCE_misionActiva", "GCE_menuMisiones", "GCE_acciones", "GCE_esJefe",
            "GCE_sigue", "GCE_aSalvo", "GCE_libre", "GCE_civRefugio", "GCE_refugioActivo",
            "GCE_oroDistanciaMax", "GCE_esperas", "GCE_contadorTareas", "GCE_npCentro",
            "GCE_npCivMuertos", "GCE_carga", "GCE_brigadas", "GCE_brigadista", "GCE_eventoActivo",
-           "GCE_eventosIntervalo", "GCE_eventosActivos", "GCE_desertor"}
+           "GCE_eventosIntervalo", "GCE_eventosActivos", "GCE_desertor", "GCE_fort", "GCE_fortPuedo",
+           "GCE_fortFantasma", "GCE_fortificaciones", "GCE_requisada", "GCE_aereoHasta", "GCE_datos",
+           "GCE_jefeLatido", "GCE_jefeEnemigos", "GCE_pueblosActivos", "GCE_cuartelDecorado",
+           "GCE_fortAcciones"}
 
 clases, rutas = set(), set()
 archivos = glob.glob(os.path.join(ROOT, "addons", "**", "*.sqf"), recursive=True) + \
@@ -35,13 +38,20 @@ for f in archivos:
         elif re.fullmatch(r"[A-Za-z][A-Za-z0-9_]+", tok) and tok.startswith(PREFIJOS) and tok not in IGNORAR \
                 and not tok.startswith(("GCE_fnc_", "GCE_tarea", "GCE_np_", "GCE_poste", "GCE_flag_",
                                         "GCE_AI_", "GCE_Reb_", "GCE_CIV", "GCE_oro", "GCE_polvorin",
-                                        "GCE_refugio", "GCE_brig", "GCE_desert", "GCE_huelga")):
+                                        "GCE_refugio", "GCE_brig", "GCE_desert", "GCE_huelga", "GCE_requisa", "GCE_aereo",
+                                        "GCE_menu", "GCE_volunt", "GCE_esperas")):
             clases.add(tok)
     # clases de CfgVehicles/CfgWeapons declaradas como base en los config.cpp
     if f.endswith("config.cpp"):
         for base in re.findall(r"class (\w+)\s*;", s):
             if base not in ("UniformItem",):
                 clases.add(base)
+
+# todos los archivos de datos de los PBO (aunque su ruta se construya en el código)
+for f in glob.glob(os.path.join(ROOT, "addons", "*", "data", "**", "*.*"), recursive=True):
+    if f.lower().endswith((".paa", ".jpg")):
+        rel = os.path.relpath(f, os.path.join(ROOT, "addons")).replace("/", "\\")
+        rutas.add("\\GCE\\addons\\" + rel)
 
 marcadores = sorted(c for c in clases if c.startswith(("flag_", "a3a_flag", "LIB_faction")))
 clases = sorted(c for c in clases if c not in marcadores)
